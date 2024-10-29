@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hndy.xl.mapper.UserPointsMapper">
+    
+    <resultMap type="com.hndy.xl.domain.UserPoints" id="UserPointsResult">
+        <result property="id"    column="id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="deptId"    column="dept_id"    />
+        <result property="points"    column="points"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectUserPointsVo">
+        SELECT p.id as id,
+               u.nick_name as user_id,
+               d.dept_name as dept_id,
+               p.points as points,
+               p.update_time as update_time
+        FROM t_user_points as p
+                 JOIN sys_user as u ON p.user_id = u.user_id
+                 JOIN sys_dept as d ON p.dept_id = d.dept_id
+    </sql>
+
+
+    <select id="selectUserPointsList" parameterType="com.hndy.xl.domain.UserPoints" resultMap="UserPointsResult">
+        SELECT p.id as id,
+        u.nick_name as user_id,
+        d.dept_name as dept_id,
+        p.points as points,
+        p.update_time as update_time
+        FROM t_user_points as p
+        JOIN sys_user as u ON p.user_id = u.user_id
+        JOIN sys_dept as d ON p.dept_id = d.dept_id
+        <where>
+            <if test="deptId != null and deptId != ''">
+                AND d.dept_name LIKE CONCAT('%', #{deptId}, '%')
+            </if>
+            <if test="points != null">
+                AND p.points = #{points}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="selectUserPointsById" parameterType="Long" resultMap="UserPointsResult">
+        <include refid="selectUserPointsVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertUserPoints" parameterType="com.hndy.xl.domain.UserPoints" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user_points
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null and userId != ''">user_id,</if>
+            <if test="deptId != null and deptId != ''">dept_id,</if>
+            <if test="points != null">points,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null and userId != ''">#{userId},</if>
+            <if test="deptId != null and deptId != ''">#{deptId},</if>
+            <if test="points != null">#{points},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateUserPoints" parameterType="com.hndy.xl.domain.UserPoints">
+        update t_user_points
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="points != null">points = #{points},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUserPointsById" parameterType="Long">
+        delete from t_user_points where id = #{id}
+    </delete>
+
+    <delete id="deleteUserPointsByIds" parameterType="String">
+        delete from t_user_points where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
