@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Validator;
+
+import com.hndy.xl.system.mapper.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,6 @@ import com.hndy.xl.common.utils.spring.SpringUtils;
 import com.hndy.xl.system.domain.SysPost;
 import com.hndy.xl.system.domain.SysUserPost;
 import com.hndy.xl.system.domain.SysUserRole;
-import com.hndy.xl.system.mapper.SysPostMapper;
-import com.hndy.xl.system.mapper.SysRoleMapper;
-import com.hndy.xl.system.mapper.SysUserMapper;
-import com.hndy.xl.system.mapper.SysUserPostMapper;
-import com.hndy.xl.system.mapper.SysUserRoleMapper;
 import com.hndy.xl.system.service.ISysConfigService;
 import com.hndy.xl.system.service.ISysDeptService;
 import com.hndy.xl.system.service.ISysUserService;
@@ -64,6 +61,9 @@ public class SysUserServiceImpl implements ISysUserService
 
     @Autowired
     protected Validator validator;
+
+    @Autowired
+    private UserPointMapper userPointMapper;
 
     /**
      * 根据条件分页查询用户列表
@@ -266,6 +266,7 @@ public class SysUserServiceImpl implements ISysUserService
         insertUserPost(user);
         // 新增用户与角色管理
         insertUserRole(user);
+        userPointMapper.addPoints(user.getDeptId(),user.getUserId());
         return rows;
     }
 
@@ -300,6 +301,8 @@ public class SysUserServiceImpl implements ISysUserService
         userPostMapper.deleteUserPostByUserId(userId);
         // 新增用户与岗位管理
         insertUserPost(user);
+//        System.out.println("\n\n\n"+user.getDeptId()+"deptid  userid"+user.getUserId()+"\n\n\n");
+        userPointMapper.updatePoints(user.getDeptId(),user.getUserId());
         return userMapper.updateUser(user);
     }
 
@@ -443,15 +446,15 @@ public class SysUserServiceImpl implements ISysUserService
      */
     @Override
     @Transactional
-    public int deleteUserById(Long userId)
-    {
+    public int deleteUserById(Long userId) {
         // 删除用户与角色关联
         userRoleMapper.deleteUserRoleByUserId(userId);
         // 删除用户与岗位表
         userPostMapper.deleteUserPostByUserId(userId);
+//        System.out.println("\n\n\n\n\n\n11" + userId + "\n\n\n\n\n\n");
+        userPointMapper.deletePoints(userId);
         return userMapper.deleteUserById(userId);
     }
-
     /**
      * 批量删除用户信息
      * 
@@ -471,6 +474,11 @@ public class SysUserServiceImpl implements ISysUserService
         userRoleMapper.deleteUserRole(userIds);
         // 删除用户与岗位关联
         userPostMapper.deleteUserPost(userIds);
+//        System.out.println("\n\n\n\n\n\n22" + userIds + "\n\n\n\n\n\n");
+        for(Long userId:userIds)
+        {
+            userPointMapper.deletePoints(userId);
+        }
         return userMapper.deleteUserByIds(userIds);
     }
 
