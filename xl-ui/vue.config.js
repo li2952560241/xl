@@ -75,6 +75,12 @@ module.exports = {
     config.plugins.delete('preload') // TODO: need test
     config.plugins.delete('prefetch') // TODO: need test
 
+    config.module
+      .rule('markdown')
+      .test(/\.md$/)
+      .use('raw-loader')
+      .loader('raw-loader')
+      .end();
     // set svg-sprite-loader
     config.module
       .rule('svg')
