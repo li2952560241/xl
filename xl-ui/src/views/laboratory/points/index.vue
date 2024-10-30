@@ -71,7 +71,11 @@
 
     <el-table v-loading="loading" :data="pointsList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="序号" align="center" prop="id" />
+      <el-table-column label="序号" align="center">
+        <template slot-scope="scope">
+          {{ (queryParams.pageNum - 1) * queryParams.pageSize + scope.$index + 1 }}
+        </template>
+      </el-table-column>
       <el-table-column label="昵称" align="center" prop="userId" />
       <el-table-column label="方向" align="center" prop="deptId" />
       <el-table-column label="积分" align="center" prop="points" />
@@ -94,6 +98,7 @@
         </template>
       </el-table-column>
     </el-table>
+
 
     <pagination
       v-show="total>0"

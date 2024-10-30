@@ -141,7 +141,7 @@
           <el-table-column label="用户编号" align="center" key="userId" prop="userId" v-if="columns[0].visible" />
           <el-table-column label="用户名称" align="center" key="userName" prop="userName" v-if="columns[1].visible" :show-overflow-tooltip="true" />
           <el-table-column label="用户昵称" align="center" key="nickName" prop="nickName" v-if="columns[2].visible" :show-overflow-tooltip="true" />
-          <el-table-column label="部门" align="center" key="deptName" prop="dept.deptName" v-if="columns[3].visible" :show-overflow-tooltip="true" />
+          <el-table-column label="方向" align="center" key="deptName" prop="dept.deptName" v-if="columns[3].visible" :show-overflow-tooltip="true" />
           <el-table-column label="手机号码" align="center" key="phonenumber" prop="phonenumber" v-if="columns[4].visible" width="120" />
           <el-table-column label="状态" align="center" key="status" v-if="columns[5].visible">
             <template slot-scope="scope">
@@ -212,8 +212,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="归属部门" prop="deptId">
-              <treeselect v-model="form.deptId" :options="deptOptions" :show-count="true" placeholder="请选择归属部门" />
+            <el-form-item label="方向" prop="deptId">
+              <treeselect v-model="form.deptId" :options="deptOptions" :show-count="true" placeholder="请选择方向" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -417,7 +417,7 @@ export default {
         { key: 0, label: `用户编号`, visible: true },
         { key: 1, label: `用户名称`, visible: true },
         { key: 2, label: `用户昵称`, visible: true },
-        { key: 3, label: `部门`, visible: true },
+        { key: 3, label: `方向`, visible: true },
         { key: 4, label: `手机号码`, visible: true },
         { key: 5, label: `状态`, visible: true },
         { key: 6, label: `创建时间`, visible: true }
@@ -430,6 +430,12 @@ export default {
         ],
         nickName: [
           { required: true, message: "用户昵称不能为空", trigger: "blur" }
+        ],
+        deptId: [
+          { required: true, message: "方向不能为空", trigger: "blur" }
+        ],
+        roleIds: [
+          { required: true, message: "用户角色不能为空", trigger: "blur" }
         ],
         password: [
           { required: true, message: "用户密码不能为空", trigger: "blur" },

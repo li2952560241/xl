@@ -21,8 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM t_user_points as p
                  JOIN sys_user as u ON p.user_id = u.user_id
                  JOIN sys_dept as d ON p.dept_id = d.dept_id
+        ORDER BY p.points DESC
     </sql>
-
 
     <select id="selectUserPointsList" parameterType="com.hndy.xl.domain.UserPoints" resultMap="UserPointsResult">
         SELECT p.id as id,
@@ -41,13 +41,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 AND p.points = #{points}
             </if>
         </where>
+        ORDER BY p.points DESC
     </select>
-
 
     <select id="selectUserPointsById" parameterType="Long" resultMap="UserPointsResult">
-        <include refid="selectUserPointsVo"/>
-        where id = #{id}
+        SELECT p.id as id,
+               u.nick_name as user_id,
+               d.dept_name as dept_id,
+               p.points as points,
+               p.update_time as update_time
+        FROM t_user_points as p
+                 JOIN sys_user as u ON p.user_id = u.user_id
+                 JOIN sys_dept as d ON p.dept_id = d.dept_id
+        WHERE id = #{id}
+        ORDER BY p.points DESC
     </select>
+
+
 
     <insert id="insertUserPoints" parameterType="com.hndy.xl.domain.UserPoints" useGeneratedKeys="true" keyProperty="id">
         insert into t_user_points
