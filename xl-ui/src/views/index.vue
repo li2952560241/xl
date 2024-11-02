@@ -44,7 +44,7 @@ export default {
   methods: {
     loadWordFile() {
       // 直接从 public 目录加载 Word 文件
-      fetch('/assets/11.docx') // 确保路径正确
+      fetch('/assets/xl_introduce.docx') // 确保路径正确
         .then(response => {
           if (!response.ok) {
             throw new Error('网络响应失败');
