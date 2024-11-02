@@ -9,7 +9,6 @@
   </div>
 </template>
 
-
 <script>
 import { upload, download } from '@/api/laboratory/introduce'; // 确保引入上传和下载接口
 import { MessageBox } from 'element-ui';
@@ -36,7 +35,7 @@ export default {
           // 无论用户选择下载还是取消下载，都继续执行文件上传
           const formData = new FormData();
           formData.append('file', file); // 确保这里的字段名与后端一致
-
+          formData.append('filename', 'xl_introduce.docx');
           try {
             const response = await upload(formData);
             if (response) {
@@ -54,18 +53,19 @@ export default {
     },
     async downloadFile() {
       try {
-        const response = await download();
+        const filename = 'xl_introduce.docx';
+        const response = await download({ filename }); // 传递 filename 参数
         const blob = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'xl_introduce.docx'; // 设置下载的文件名
+        a.download = filename; // 设置下载的文件名
         a.click();
         window.URL.revokeObjectURL(url);
       } catch (error) {
         console.error('下载失败', error);
       }
-    }
+    },
   }
 }
 </script>

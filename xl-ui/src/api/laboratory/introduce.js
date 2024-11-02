@@ -22,10 +22,11 @@ export function upload(data) {
  * 下载.docx文件
  * @returns {*}
  */
-export function download() {
+export function download(data) {
   return request({
     url: '/introduce/download',
     method: 'get',
+    params: data, // 使用 params 传递数据
     responseType: 'blob',
     headers: {
       Authorization: "Bearer " + getToken(),
@@ -33,3 +34,5 @@ export function download() {
     }
   });
 }
+
+

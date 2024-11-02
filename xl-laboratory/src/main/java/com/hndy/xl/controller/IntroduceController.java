@@ -19,7 +19,7 @@ import org.springframework.http.MediaType;
 @RequestMapping("/introduce")
 public class IntroduceController extends BaseController {
 
-    private static final String FILE_PATH = "xl-ui/public/assets/xl_introduce.docx";
+    private static final String FILE_PATH = "xl-ui/public/assets/";
 
     /**
      * 上传.docx文件
@@ -28,14 +28,15 @@ public class IntroduceController extends BaseController {
      */
     @PreAuthorize("@ss.hasPermi('laboratory:introduce:upload')")
     @PostMapping("/upload")
-    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file,@RequestParam("filename") String filename) {
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("这是一个空文件");
         }
 
+//        System.out.println("\n\n\n\n"+filename+"\n\n\n\n");
         try {
             // 保存新文件
-            String filePath = saveFile(file);
+            String filePath = saveFile(file, filename);
             return ResponseEntity.ok("File uploaded successfully to " + filePath);
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,13 +44,16 @@ public class IntroduceController extends BaseController {
         }
     }
 
-    private String saveFile(MultipartFile file) throws IOException {
+    private String saveFile(MultipartFile file, String filename) throws IOException {
+
+//        System.out.println("\n\n\n\n"+filename+"\n\n\n\n");
         // 获取项目根目录
         String projectRoot = System.getProperty("user.dir");
 
         // 构建目标文件的绝对路径
-        String targetPath = Paths.get(projectRoot, FILE_PATH).toString();
+        String targetPath = Paths.get(projectRoot, FILE_PATH+filename).toString();
 
+//        System.out.println("\n\n\n\n"+targetPath+"\n\n\n\n");
         // 创建目标文件对象
         File targetFile = new File(targetPath);
 
@@ -71,11 +75,11 @@ public class IntroduceController extends BaseController {
      * @return
      */
     @GetMapping("/download")
-    public ResponseEntity<Resource> downloadFile() {
+    public ResponseEntity<Resource> downloadFile(@RequestParam("filename") String filename) {
 //        System.out.println("\n\n\n\n\n\n");
-//        System.out.println("下载文件");
+//        System.out.println(filename);
 //        System.out.println("\n\n\n\n\n\n");
-        File file = new File(System.getProperty("user.dir"), FILE_PATH);
+        File file = new File(System.getProperty("user.dir"), FILE_PATH+filename);
         if (!file.exists()) {
             return ResponseEntity.notFound().build();
         }
