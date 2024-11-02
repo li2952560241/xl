@@ -72,9 +72,9 @@ public class IntroduceController extends BaseController {
      */
     @GetMapping("/download")
     public ResponseEntity<Resource> downloadFile() {
-        System.out.println("\n\n\n\n\n\n");
-        System.out.println("下载文件");
-        System.out.println("\n\n\n\n\n\n");
+//        System.out.println("\n\n\n\n\n\n");
+//        System.out.println("下载文件");
+//        System.out.println("\n\n\n\n\n\n");
         File file = new File(System.getProperty("user.dir"), FILE_PATH);
         if (!file.exists()) {
             return ResponseEntity.notFound().build();

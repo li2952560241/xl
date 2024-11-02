@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>湘岚实验室简</h1>
-    <div v-html="rendererdMarkdown"></div>
+    <h1>湘岚实验室简介</h1>
+<!--    <div v-html="rendererdMarkdown"></div>-->
 
-    <h1>展示 Word 文件内容</h1>
+<!--    <h1>展示 Word 文件内容</h1>-->
     <div v-html="wordContent"></div>
   </div>
 </template>
