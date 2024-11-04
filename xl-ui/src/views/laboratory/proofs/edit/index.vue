@@ -2,21 +2,37 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="用户名称" prop="userId">
-        <el-input
+        <el-select
           v-model="queryParams.userId"
-          placeholder="请输入用户名称"
+          placeholder="请选择用户名称"
           clearable
-          @keyup.enter.native="handleQuery"
-        />
+          @change="handleQuery"
+        >
+          <el-option
+            v-for="user in proofsList"
+            :key="user.userId"
+            :label="user.userName"
+            :value="user.userId"
+          />
+        </el-select>
       </el-form-item>
+
       <el-form-item label="更新人" prop="updateBy">
-        <el-input
+        <el-select
           v-model="queryParams.updateBy"
-          placeholder="请输入更新人"
+          placeholder="请选择更新人"
           clearable
-          @keyup.enter.native="handleQuery"
-        />
+          @change="handleQuery"
+        >
+          <el-option
+            v-for="user in proofsList"
+            :key="user.updateBy"
+            :label="user.updaterName"
+            :value="user.updateBy"
+          />
+        </el-select>
       </el-form-item>
+
       <el-form-item label="积分值" prop="points">
         <el-input
           v-model="queryParams.points"
@@ -60,7 +76,7 @@
     <el-table v-loading="loading" :data="proofsList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="序号" align="center" prop="materialId" />
-      <el-table-column label="用户名称" align="center" prop="userId" />
+      <el-table-column label="用户名称" align="center" prop="userName" />
       <el-table-column label="材料" align="center" prop="materialContent">
         <template slot-scope="scope">
           <div v-html="formatMaterialContent(scope.row.materialContent)"></div>
@@ -76,7 +92,7 @@
           <span>{{ scope.row.status === '0' ? '已提交' : '已加分' }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="更新人" align="center" prop="updateBy" />
+      <el-table-column label="更新人" align="center" prop="updaterName" />
       <el-table-column label="积分值" align="center" prop="points" />
       <el-table-column label="认定时间" align="center" prop="updateTime" width="180">
         <template slot-scope="scope">

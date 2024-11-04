@@ -21,6 +21,24 @@ public class Proofs extends BaseEntity
     /** 用户名称 */
     @Excel(name = "用户名称")
     private Long userId;
+    private String userName;
+    private String updaterName;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUpdaterName() {
+        return updaterName;
+    }
+
+    public void setUpdaterName(String updaterName) {
+        this.updaterName = updaterName;
+    }
 
     /** 材料 */
     @Excel(name = "材料")

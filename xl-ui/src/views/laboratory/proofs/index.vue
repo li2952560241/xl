@@ -1,9 +1,16 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="更新人" prop="updateBy">
-        <el-input v-model="queryParams.updateBy" placeholder="请输入更新人" clearable @keyup.enter.native="handleQuery" />
-      </el-form-item>
+<!--      <el-form-item label="更新人" prop="updateBy">-->
+<!--        <el-select v-model="queryParams.updateBy" placeholder="请选择更新人" clearable @change="handleQuery">-->
+<!--          <el-option-->
+<!--            v-for="user in userList"-->
+<!--            :key="user.userId"-->
+<!--            :label="user.nickName"-->
+<!--            :value="user.id"-->
+<!--          />-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
       <el-form-item label="积分值" prop="points">
         <el-input v-model="queryParams.points" placeholder="请输入积分值" clearable @keyup.enter.native="handleQuery" />
       </el-form-item>
@@ -37,7 +44,7 @@
     <el-table v-loading="loading" :data="proofsList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="序号" align="center" prop="materialId" />
-      <el-table-column label="用户名称" align="center" prop="userId" />
+      <el-table-column label="用户名称" align="center" prop="userName" />
       <el-table-column label="材料" align="center" prop="materialContent">
         <template slot-scope="scope">
           <div v-html="scope.row.materialContent" class="table" />
@@ -53,7 +60,7 @@
           <span>{{ scope.row.status === '0' ? '已提交' : '已加分' }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="更新人" align="center" prop="updateBy" />
+      <el-table-column label="更新人" align="center" prop="updaterName" />
       <el-table-column label="积分值" align="center" prop="points" />
       <el-table-column label="认定时间" align="center" prop="updateTime" width="180">
         <template slot-scope="scope">
@@ -94,12 +101,11 @@
         <el-button @click="cancel">取 消</el-button>
       </div>
     </el-dialog>
-
   </div>
 </template>
 
 <script>
-import { listProofs, getProofs, addProofs, updateProofs } from "@/api/laboratory/proofs";
+import { listProofs, getProofs, addProofs, updateProofs, listUsers } from "@/api/laboratory/proofs";
 import store from "@/store";
 
 export default {
@@ -120,7 +126,7 @@ export default {
         pageSize: 10,
         userId: null,
         status: null,
-        updateBy: null,
+        updateBy: null, // 使用用户 ID
         points: null,
       },
       form: {},
@@ -130,13 +136,20 @@ export default {
         ],
       },
       userId: store.state.user.id,
-      currentRow: {}
+      currentRow: {},
+      userList: [], // 用于存储用户列表
     };
   },
   created() {
     this.getList();
+    this.getUserList(); // 获取用户列表
   },
   methods: {
+    getUserList() {
+      listUsers().then(response => {
+        this.userList = response.data;
+      });
+    },
     getList() {
       this.queryParams.userId = this.userId;
       this.loading = true;
@@ -219,10 +232,13 @@ export default {
     handleExport() {
       this.download('laboratory/proofs/export', {
         ...this.queryParams
-      }, `proofs_${new Date().getTime()}.xlsx`);
+      });
+    },
+    parseTime(time) {
+      return new Date(time).toLocaleString();
     },
     isImageUrl(url) {
-      return /\.(jpeg|jpg|gif|png|svg)$/.test(url);
+      return url.startsWith('http') && (url.endsWith('.jpg') || url.endsWith('.png'));
     }
   }
 };
