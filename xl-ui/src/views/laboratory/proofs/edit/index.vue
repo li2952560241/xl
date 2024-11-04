@@ -9,7 +9,7 @@
           @change="handleQuery"
         >
           <el-option
-            v-for="user in proofsList"
+            v-for="user in userList"
             :key="user.userId"
             :label="user.userName"
             :value="user.userId"
@@ -25,7 +25,7 @@
           @change="handleQuery"
         >
           <el-option
-            v-for="user in proofsList"
+            v-for="user in updateName"
             :key="user.updateBy"
             :label="user.updaterName"
             :value="user.updateBy"
@@ -160,6 +160,8 @@ export default {
       showSearch: true,
       total: 0,
       proofsList: [],
+      userList: [],// 用户列表的下拉框
+      updateName: [],// 更新人的下拉框
       title: "",
       open: false,
       isEdit: false,
@@ -190,9 +192,36 @@ export default {
       listProofs(this.queryParams).then(response => {
         this.proofsList = response.rows;
         this.total = response.total;
+
+        // 处理用户列表
+        const userMap = new Map();
+        const updaterMap = new Map();
+
+        this.proofsList.forEach(item => {
+          if (!userMap.has(item.userId)) {
+            userMap.set(item.userId, {
+              userName: item.userName,
+              userId: item.userId // 保留 userId
+            });
+          }
+          if (!updaterMap.has(item.updateBy)) {
+            updaterMap.set(item.updateBy, {
+              updaterName: item.updaterName,
+              updateBy: item.updateBy // 保留 updateBy
+            });
+          }
+        });
+
+        this.userList = Array.from(userMap.values());
+        this.updateName = Array.from(updaterMap.values());
+
+        console.log('proofsList:', this.proofsList);
+        console.log('userList:', this.userList);
+        console.log('updateName:', this.updateName);
         this.loading = false;
       });
     },
+
     // 取消按钮
     cancel() {
       this.open = false;
