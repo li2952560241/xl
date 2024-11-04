@@ -1,14 +1,14 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="用户名称" prop="userId">
-        <el-input
-          v-model="queryParams.userId"
-          placeholder="请输入用户名称"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+<!--      <el-form-item label="用户名称" prop="userId">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.userId"-->
+<!--          placeholder="请输入用户名称"-->
+<!--          clearable-->
+<!--          @keyup.enter.native="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
       <el-form-item label="更新人" prop="updateBy">
         <el-input
           v-model="queryParams.updateBy"
@@ -114,7 +114,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -143,7 +143,7 @@
 
 <script>
 import { listProofs, getProofs, delProofs, addProofs, updateProofs } from "@/api/laboratory/proofs";
-
+import store from "@/store"
 export default {
   name: "Proofs",
   data() {
@@ -182,7 +182,8 @@ export default {
         materialContent: [
           { required: true, message: "材料不能为空", trigger: "blur" }
         ],
-      }
+      },
+      userId:store.state.user.id//将缓存的用户id赋值给userId
     };
   },
   created() {
@@ -191,6 +192,8 @@ export default {
   methods: {
     /** 查询积分证明材料列表 */
     getList() {
+      console.log(this.userId);
+      this.queryParams.userId = this.userId;  // 将当前用户的 ID 赋值给查询参数
       this.loading = true;
       listProofs(this.queryParams).then(response => {
         this.proofsList = response.rows;
@@ -207,7 +210,7 @@ export default {
     reset() {
       this.form = {
         materialId: null,
-        userId: null,
+        userId: this.userId, // 添加用户 ID
         materialContent: null,
         createTime: null,
         status: null,
@@ -250,9 +253,13 @@ export default {
       });
     },
     /** 提交按钮 */
+    // 在 submitForm 方法中，确保 userId 被传递
     submitForm() {
       this.$refs["form"].validate(valid => {
         if (valid) {
+          // 添加用户 ID
+          this.form.userId = this.userId; // 确保 userId 在新增时存在
+
           if (this.form.materialId != null) {
             updateProofs(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
