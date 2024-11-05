@@ -24,7 +24,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select job_id, job_name, job_group, invoke_target, cron_expression, misfire_policy, concurrent, status, create_by, create_time, remark 
 		from sys_job
     </sql>
-	
+
+	<update id="updatepoints">
+		update t_user_points set points = points -1
+	</update>
 	<select id="selectJobList" parameterType="SysJob" resultMap="SysJobResult">
 		<include refid="selectJobVo"/>
 		<where>
