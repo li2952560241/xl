@@ -84,6 +84,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where id = #{id}
     </update>
 
+    <update id="updatePoints">
+        UPDATE t_user_points
+        SET points = points + #{points}
+        WHERE user_id = #{userId}
+    </update>
+
+
     <delete id="deleteUserPointsById" parameterType="Long">
         delete from t_user_points where id = #{id}
     </delete>

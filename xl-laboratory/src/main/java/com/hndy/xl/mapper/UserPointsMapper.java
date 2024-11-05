@@ -2,6 +2,7 @@ package com.hndy.xl.mapper;
 
 import java.util.List;
 import com.hndy.xl.domain.UserPoints;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 用户积分Mapper接口
@@ -42,6 +43,14 @@ public interface UserPointsMapper
      * @return 结果
      */
     public int updateUserPoints(UserPoints userPoints);
+
+    /**
+     * 修改用户积分
+     *
+     * @param
+     * @return 结果
+     */
+    public int updatePoints(@Param("points") int points, @Param("userId") Long userId);
 
     /**
      * 删除用户积分

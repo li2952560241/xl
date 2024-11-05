@@ -2,6 +2,7 @@ package com.hndy.xl.mapper;
 
 import java.util.List;
 import com.hndy.xl.domain.Proofs;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 积分证明材料Mapper接口
@@ -58,4 +59,5 @@ public interface ProofsMapper
      * @return 结果
      */
     public int deleteProofsByMaterialIds(Long[] materialIds);
+
 }

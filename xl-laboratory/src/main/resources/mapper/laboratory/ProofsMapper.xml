@@ -52,14 +52,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="insertProofs" parameterType="com.hndy.xl.domain.Proofs">
         insert into t_proofs
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="materialId != null">p.material_id,</if>
-            <if test="userId != null">p.user_id,</if>
-            <if test="materialContent != null and materialContent != ''">p.material_content,</if>
-            <if test="createTime != null">p.create_time,</if>
-            <if test="status != null">p.status,</if>
-            <if test="updateBy != null">p.update_by,</if>
-            <if test="points != null">p.points,</if>
-            <if test="updateTime != null">p.update_time,</if>
+            <if test="materialId != null">material_id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="materialContent != null and materialContent != ''">material_content,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="status != null">status,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="points != null">points,</if>
+            <if test="updateTime != null">update_time,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="materialId != null">#{materialId},</if>

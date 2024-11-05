@@ -2,11 +2,14 @@ package com.hndy.xl.service.impl;
 
 import java.util.List;
 import com.hndy.xl.common.utils.DateUtils;
+import com.hndy.xl.mapper.UserPointsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.hndy.xl.mapper.ProofsMapper;
 import com.hndy.xl.domain.Proofs;
 import com.hndy.xl.service.IProofsService;
+
+import javax.validation.constraints.Null;
 
 /**
  * 积分证明材料Service业务层处理
@@ -20,6 +23,8 @@ public class ProofsServiceImpl implements IProofsService
     @Autowired
     private ProofsMapper proofsMapper;
 
+    @Autowired
+    private UserPointsMapper userPointsMapper;
     /**
      * 查询积分证明材料
      * 
@@ -67,6 +72,17 @@ public class ProofsServiceImpl implements IProofsService
     public int updateProofs(Proofs proofs)
     {
         proofs.setUpdateTime(DateUtils.getNowDate());
+        if(proofs.getPoints()!= null)
+        {
+//            System.out.println("\n\n\n\n\n\n"+proofs.getPoints()+"\n\n\n\n\n\n");
+            Integer points = Integer.valueOf(proofs.getPoints());
+//            System.out.println("\n\n\n\n\n\n"+proofs.getUserId()+"\n\n\n\n\n\n");
+//            System.out.println("\n\n\n\n\n\n"+points+"\n\n\n\n\n\n");
+            //userPointsMapper.updatePoints(points,proofs.getUserId());
+            Proofs proofs1 = proofsMapper.selectProofsByMaterialId(proofs.getMaterialId());
+//            System.out.println("\n\n\n\n\n\n"+proofs1+"\n\n\n\n\n\n");
+            userPointsMapper.updatePoints(points- Integer.valueOf(proofs1.getPoints()),proofs.getUserId());
+        }
         return proofsMapper.updateProofs(proofs);
     }
 
