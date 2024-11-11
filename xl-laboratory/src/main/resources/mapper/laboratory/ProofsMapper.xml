@@ -87,6 +87,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where material_id = #{materialId}
     </update>
 
+    <update id="updateCognizanceProofs" parameterType="com.hndy.xl.domain.Proofs">
+        update t_proofs
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="points != null">points = #{points},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where material_id = #{materialId}
+    </update>
+
     <delete id="deleteProofsByMaterialId" parameterType="Long">
         delete from t_proofs where material_id = #{materialId}
     </delete>

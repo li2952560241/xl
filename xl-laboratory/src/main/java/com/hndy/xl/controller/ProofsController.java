@@ -85,12 +85,17 @@ public class ProofsController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('laboratory:proofs:edit')")
     @Log(title = "积分证明材料", businessType = BusinessType.UPDATE)
-    @PutMapping
+    @PutMapping("/update")
     public AjaxResult edit(@RequestBody Proofs proofs)
     {
         return toAjax(proofsService.updateProofs(proofs));
     }
-
+    @Log(title = "积分认定", businessType = BusinessType.UPDATE)
+    @PutMapping("/cognizance")
+    public AjaxResult editCognizance(@RequestBody Proofs proofs)
+    {
+        return toAjax(proofsService.updateCognizanceProofs(proofs));
+    }
     /**
      * 删除积分证明材料
      */

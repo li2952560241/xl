@@ -146,7 +146,14 @@
 </template>
 
 <script>
-import { listProofs, getProofs, delProofs, addProofs, updateProofs } from "@/api/laboratory/proofs";
+import {
+  listProofs,
+  getProofs,
+  delProofs,
+  addProofs,
+  updateProofs,
+  updateCognizanceProofs
+} from "@/api/laboratory/proofs";
 import store from "@/store";
 
 export default {
@@ -275,14 +282,8 @@ export default {
           this.form.status = 1; // 设置状态为1
 
           if (this.form.materialId != null) {
-            updateProofs(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
-              this.open = false;
-              this.getList();
-            });
-          } else {
-            addProofs(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
+            updateCognizanceProofs(this.form).then(response => {
+              this.$modal.msgSuccess("认定成功");
               this.open = false;
               this.getList();
             });

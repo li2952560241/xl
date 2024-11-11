@@ -44,6 +44,13 @@ public interface IProofsService
     public int updateProofs(Proofs proofs);
 
     /**
+     * 认定积分材料
+     *
+     * @param proofs 认定积分
+     * @return 结果
+     */
+    public int updateCognizanceProofs(Proofs proofs);
+    /**
      * 批量删除积分证明材料
      * 
      * @param materialIds 需要删除的积分证明材料主键集合

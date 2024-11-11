@@ -26,10 +26,18 @@ export function addProofs(data) {
   })
 }
 
-// 修改积分证明材料
+// // 修改积分证明材料
 export function updateProofs(data) {
   return request({
-    url: '/laboratory/proofs',
+    url: '/laboratory/proofs/update',
+    method: 'put',
+    data: data
+  })
+}
+// 认定积分
+export function updateCognizanceProofs(data) {
+  return request({
+    url: '/laboratory/proofs/cognizance',
     method: 'put',
     data: data
   })

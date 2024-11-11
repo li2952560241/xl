@@ -44,6 +44,7 @@ public interface ProofsMapper
      */
     public int updateProofs(Proofs proofs);
 
+    public int updateCognizanceProofs(Proofs proofs);
     /**
      * 删除积分证明材料
      * 

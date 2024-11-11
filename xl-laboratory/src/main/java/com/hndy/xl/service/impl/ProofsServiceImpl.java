@@ -71,6 +71,16 @@ public class ProofsServiceImpl implements IProofsService
     @Override
     public int updateProofs(Proofs proofs)
     {
+        return proofsMapper.updateProofs(proofs);
+    }
+
+    /**
+     * 认定积分
+     *
+     */
+    @Override
+    public int updateCognizanceProofs(Proofs proofs)
+    {
         proofs.setUpdateTime(DateUtils.getNowDate());
         if(proofs.getPoints()!= null)
         {
@@ -87,9 +97,8 @@ public class ProofsServiceImpl implements IProofsService
                 userPointsMapper.updatePoints(points,proofs.getUserId());
             }
         }
-        return proofsMapper.updateProofs(proofs);
+        return proofsMapper.updateCognizanceProofs(proofs);
     }
-
     /**
      * 批量删除积分证明材料
      * 
