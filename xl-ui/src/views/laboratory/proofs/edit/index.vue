@@ -134,7 +134,7 @@
           <editor v-model="form.materialContent" :min-height="192" :readonly="isEdit" />
         </el-form-item>
         <el-form-item label="积分值" prop="points">
-          <el-input v-model="form.points" placeholder="请输入积分值" />
+          <el-input-number v-model="form.points" :min="0" :max="10" placeholder="请输入积分值" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -150,8 +150,6 @@ import {
   listProofs,
   getProofs,
   delProofs,
-  addProofs,
-  updateProofs,
   updateCognizanceProofs
 } from "@/api/laboratory/proofs";
 import store from "@/store";
