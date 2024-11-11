@@ -2,12 +2,19 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="方向" prop="deptId">
-        <el-input
+        <el-select
           v-model="queryParams.deptId"
-          placeholder="请输入方向"
+          placeholder="请选择方向"
           clearable
-          @keyup.enter.native="handleQuery"
-        />
+          @change="handleQuery"
+        >
+          <el-option
+            v-for="dict in direction"
+            :key="dict.deptId"
+            :label="dict.deptName"
+            :value="dict.deptId"
+          ></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item label="积分" prop="points">
         <el-input
@@ -144,6 +151,8 @@ export default {
       total: 0,
       // 用户积分表格数据
       pointsList: [],
+      //用户方向列表
+      direction: [],
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -178,6 +187,19 @@ export default {
       listPoints(this.queryParams).then(response => {
         this.pointsList = response.rows;
         this.total = response.total;
+
+        //处理方向列表
+        const directionMap = new Map();
+        this.pointsList.forEach(item => {
+          if (!directionMap.has(item.deptId)) {
+            directionMap.set(item.deptId, {
+              direction: item.direction,
+              deptId: item.deptId // 保留 deptId
+            });
+          }
+        });
+        this.direction = Array.from(directionMap.values());
+        console.log('direction:', this.direction);
         this.loading = false;
       });
     },

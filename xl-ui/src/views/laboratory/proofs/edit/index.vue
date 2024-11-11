@@ -211,13 +211,11 @@ export default {
             });
           }
         });
-
         this.userList = Array.from(userMap.values());
         this.updateName = Array.from(updaterMap.values());
-
-        console.log('proofsList:', this.proofsList);
-        console.log('userList:', this.userList);
-        console.log('updateName:', this.updateName);
+        // console.log('proofsList:', this.proofsList);
+        // console.log('userList:', this.userList);
+        // console.log('updateName:', this.updateName);
         this.loading = false;
       });
     },
