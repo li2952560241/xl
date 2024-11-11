@@ -74,14 +74,18 @@ public class ProofsServiceImpl implements IProofsService
         proofs.setUpdateTime(DateUtils.getNowDate());
         if(proofs.getPoints()!= null)
         {
-//            System.out.println("\n\n\n\n\n\n"+proofs.getPoints()+"\n\n\n\n\n\n");
+            System.out.println("\n\n\n\n\n\n"+proofs.getPoints()+"\n\n\n\n\n\n");
             Integer points = Integer.valueOf(proofs.getPoints());
 //            System.out.println("\n\n\n\n\n\n"+proofs.getUserId()+"\n\n\n\n\n\n");
 //            System.out.println("\n\n\n\n\n\n"+points+"\n\n\n\n\n\n");
             //userPointsMapper.updatePoints(points,proofs.getUserId());
             Proofs proofs1 = proofsMapper.selectProofsByMaterialId(proofs.getMaterialId());
-//            System.out.println("\n\n\n\n\n\n"+proofs1+"\n\n\n\n\n\n");
-            userPointsMapper.updatePoints(points- Integer.valueOf(proofs1.getPoints()),proofs.getUserId());
+            System.out.println("\n\n\n\n\n\n"+proofs1+"\n\n\n\n\n\n");
+            if(proofs1.getPoints()!= null){
+                userPointsMapper.updatePoints(points- Integer.valueOf(proofs1.getPoints()),proofs.getUserId());
+            }else{
+                userPointsMapper.updatePoints(points,proofs.getUserId());
+            }
         }
         return proofsMapper.updateProofs(proofs);
     }
