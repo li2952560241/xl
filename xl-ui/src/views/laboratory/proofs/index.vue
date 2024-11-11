@@ -1,16 +1,7 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-<!--      <el-form-item label="更新人" prop="updateBy">-->
-<!--        <el-select v-model="queryParams.updateBy" placeholder="请选择更新人" clearable @change="handleQuery">-->
-<!--          <el-option-->
-<!--            v-for="user in userList"-->
-<!--            :key="user.userId"-->
-<!--            :label="user.nickName"-->
-<!--            :value="user.id"-->
-<!--          />-->
-<!--        </el-select>-->
-<!--      </el-form-item>-->
+
       <el-form-item label="积分值" prop="points">
         <el-input v-model="queryParams.points" placeholder="请输入积分值" clearable @keyup.enter.native="handleQuery" />
       </el-form-item>
@@ -43,7 +34,7 @@
 
     <el-table v-loading="loading" :data="proofsList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="序号" align="center" prop="materialId" />
+      <el-table-column label="序号" align="center" type="index" />
       <el-table-column label="用户名称" align="center" prop="userName" />
       <el-table-column label="材料" align="center" prop="materialContent">
         <template slot-scope="scope">

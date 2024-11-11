@@ -36,14 +36,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="selectProofsList" parameterType="com.hndy.xl.domain.Proofs" resultMap="ProofsResult">
         <include refid="selectProofsVo"/>
-        <where>  
+        <where>
             <if test="userId != null "> and p.user_id = #{userId}</if>
             <if test="status != null  and status != ''"> and p.status = #{status}</if>
             <if test="updateBy != null  and updateBy != ''"> and p.update_by = #{updateBy}</if>
             <if test="points != null  and points != ''"> and p.points = #{points}</if>
         </where>
+        <choose>
+            <when test="updateTime != null">
+                ORDER BY p.update_time DESC, p.create_time DESC
+            </when>
+            <otherwise>
+                ORDER BY p.create_time DESC
+            </otherwise>
+        </choose>
     </select>
-    
+
+
     <select id="selectProofsByMaterialId" parameterType="Long" resultMap="ProofsResult">
         <include refid="selectProofsVo"/>
         where material_id = #{materialId}

@@ -75,7 +75,7 @@
 
     <el-table v-loading="loading" :data="proofsList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="序号" align="center" prop="materialId" />
+      <el-table-column label="序号" align="center" type="index" />
       <el-table-column label="用户名称" align="center" prop="userName" />
       <el-table-column label="材料" align="center" prop="materialContent">
         <template slot-scope="scope">
