@@ -229,14 +229,6 @@ export default {
         }
       });
     },
-    handleExport() {
-      this.download('laboratory/proofs/export', {
-        ...this.queryParams
-      });
-    },
-    parseTime(time) {
-      return new Date(time).toLocaleString();
-    },
     isImageUrl(url) {
       return url.startsWith('http') && (url.endsWith('.jpg') || url.endsWith('.png'));
     }
