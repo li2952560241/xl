@@ -36,7 +36,8 @@ export default {
         { title: 'Web', filename: 'web_introduce.docx' },
         { title: 'misc', filename: 'misc_introduce.docx' },
         { title: 'pwn', filename: 'pwn_introduce.docx' },
-        { title: 're', filename: 're_introduce.docx' }
+        { title: 're', filename: 're_introduce.docx' },
+        { title: 'acm',filename: 'acm_introduce.docx'}
       ]
     };
   },
