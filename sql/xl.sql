@@ -11,7 +11,7 @@
  Target Server Version : 80401 (8.4.1)
  File Encoding         : 65001
 
- Date: 11/11/2024 12:20:16
+ Date: 07/12/2024 15:36:09
 */
 
 SET NAMES utf8mb4;
@@ -364,7 +364,7 @@ CREATE TABLE `sys_dept`  (
   `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 205 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 206 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dept
@@ -376,6 +376,7 @@ INSERT INTO `sys_dept` VALUES (201, 101, '0,100,101', 'pwn', 3, NULL, NULL, NULL
 INSERT INTO `sys_dept` VALUES (202, 101, '0,100,101', 'misc', 2, NULL, NULL, NULL, '0', '0', 'admin', '2024-10-29 19:01:53', '', NULL);
 INSERT INTO `sys_dept` VALUES (203, 101, '0,100,101', 're', 5, NULL, NULL, NULL, '0', '0', 'admin', '2024-10-29 19:02:03', '', NULL);
 INSERT INTO `sys_dept` VALUES (204, 101, '0,100,101', 'crypto', 6, NULL, NULL, NULL, '0', '0', 'admin', '2024-10-29 19:02:27', '', NULL);
+INSERT INTO `sys_dept` VALUES (205, 101, '0,100,101', 'ACM', 7, NULL, NULL, NULL, '0', '0', 'admin', '2024-12-06 00:48:05', '', NULL);
 
 -- ----------------------------
 -- Table structure for sys_dict_data
@@ -507,7 +508,7 @@ CREATE TABLE `sys_job_log`  (
   `exception_info` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '异常信息',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`job_log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_job_log
@@ -518,6 +519,10 @@ INSERT INTO `sys_job_log` VALUES (3, '积分每天减少一分', 'DEFAULT', 'MyT
 INSERT INTO `sys_job_log` VALUES (4, '积分每天减少一分', 'DEFAULT', 'MyTask.decrease()', '积分每天减少一分 总共耗时：16毫秒', '0', '', '2024-11-05 11:19:13');
 INSERT INTO `sys_job_log` VALUES (5, '积分每天减少一分', 'DEFAULT', 'MyTask.decrease()', '积分每天减少一分 总共耗时：30毫秒', '0', '', '2024-11-11 11:10:00');
 INSERT INTO `sys_job_log` VALUES (6, '积分每天减少一分', 'DEFAULT', 'MyTask.decrease()', '积分每天减少一分 总共耗时：14毫秒', '0', '', '2024-11-11 11:10:17');
+INSERT INTO `sys_job_log` VALUES (7, '积分每天减少一分', 'DEFAULT', 'MyTask.decrease()', '积分每天减少一分 总共耗时：18毫秒', '0', '', '2024-11-19 19:15:01');
+INSERT INTO `sys_job_log` VALUES (8, '积分每天减少一分', 'DEFAULT', 'MyTask.decrease()', '积分每天减少一分 总共耗时：83毫秒', '0', '', '2024-11-20 00:00:00');
+INSERT INTO `sys_job_log` VALUES (9, '积分每天减少一分', 'DEFAULT', 'MyTask.decrease()', '积分每天减少一分 总共耗时：292毫秒', '0', '', '2024-11-21 00:00:00');
+INSERT INTO `sys_job_log` VALUES (10, '积分每天减少一分', 'DEFAULT', 'MyTask.decrease()', '积分每天减少一分 总共耗时：28毫秒', '0', '', '2024-11-26 20:01:49');
 
 -- ----------------------------
 -- Table structure for sys_logininfor
@@ -536,7 +541,7 @@ CREATE TABLE `sys_logininfor`  (
   PRIMARY KEY (`info_id`) USING BTREE,
   INDEX `idx_sys_logininfor_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_logininfor_lt`(`login_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 316 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 379 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -757,6 +762,69 @@ INSERT INTO `sys_logininfor` VALUES (312, '123452', '10.199.80.111', '内网IP',
 INSERT INTO `sys_logininfor` VALUES (313, 'admin', '10.199.80.111', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-11-11 12:18:59');
 INSERT INTO `sys_logininfor` VALUES (314, 'admin', '10.199.80.111', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-11 12:19:04');
 INSERT INTO `sys_logininfor` VALUES (315, 'admin', '10.199.80.111', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-11 12:19:49');
+INSERT INTO `sys_logininfor` VALUES (316, 'admin123', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-11-19 19:13:07');
+INSERT INTO `sys_logininfor` VALUES (317, 'admin123', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '用户不存在/密码错误', '2024-11-19 19:13:11');
+INSERT INTO `sys_logininfor` VALUES (318, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-19 19:13:47');
+INSERT INTO `sys_logininfor` VALUES (319, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-19 19:13:58');
+INSERT INTO `sys_logininfor` VALUES (320, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-19 19:14:04');
+INSERT INTO `sys_logininfor` VALUES (321, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-19 19:47:35');
+INSERT INTO `sys_logininfor` VALUES (322, '1234561', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-11-19 19:47:42');
+INSERT INTO `sys_logininfor` VALUES (323, '1234561', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-19 19:47:45');
+INSERT INTO `sys_logininfor` VALUES (324, '1234561', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-19 19:47:56');
+INSERT INTO `sys_logininfor` VALUES (325, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-19 19:48:03');
+INSERT INTO `sys_logininfor` VALUES (326, '1234561', '10.199.80.111', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-19 20:06:37');
+INSERT INTO `sys_logininfor` VALUES (327, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-19 20:14:35');
+INSERT INTO `sys_logininfor` VALUES (328, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-19 20:14:41');
+INSERT INTO `sys_logininfor` VALUES (329, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-19 20:14:48');
+INSERT INTO `sys_logininfor` VALUES (330, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-19 20:14:54');
+INSERT INTO `sys_logininfor` VALUES (331, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-11-19 20:48:36');
+INSERT INTO `sys_logininfor` VALUES (332, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-11-19 20:48:40');
+INSERT INTO `sys_logininfor` VALUES (333, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-19 20:48:43');
+INSERT INTO `sys_logininfor` VALUES (334, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-20 11:45:41');
+INSERT INTO `sys_logininfor` VALUES (335, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-11-20 14:07:14');
+INSERT INTO `sys_logininfor` VALUES (336, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-11-20 14:07:20');
+INSERT INTO `sys_logininfor` VALUES (337, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-20 14:07:23');
+INSERT INTO `sys_logininfor` VALUES (338, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-11-20 15:25:50');
+INSERT INTO `sys_logininfor` VALUES (339, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-20 15:25:54');
+INSERT INTO `sys_logininfor` VALUES (340, '1234561', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:00:40');
+INSERT INTO `sys_logininfor` VALUES (341, '1234561', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-26 19:00:59');
+INSERT INTO `sys_logininfor` VALUES (342, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:01:06');
+INSERT INTO `sys_logininfor` VALUES (343, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-26 19:01:21');
+INSERT INTO `sys_logininfor` VALUES (344, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:01:26');
+INSERT INTO `sys_logininfor` VALUES (345, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-26 19:01:36');
+INSERT INTO `sys_logininfor` VALUES (346, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:01:41');
+INSERT INTO `sys_logininfor` VALUES (347, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-26 19:03:02');
+INSERT INTO `sys_logininfor` VALUES (348, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:03:08');
+INSERT INTO `sys_logininfor` VALUES (349, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-26 19:03:51');
+INSERT INTO `sys_logininfor` VALUES (350, '1234561', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:04:12');
+INSERT INTO `sys_logininfor` VALUES (351, '1234561', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:49:00');
+INSERT INTO `sys_logininfor` VALUES (352, '1234561', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-26 19:49:17');
+INSERT INTO `sys_logininfor` VALUES (353, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:49:24');
+INSERT INTO `sys_logininfor` VALUES (354, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-26 19:50:13');
+INSERT INTO `sys_logininfor` VALUES (355, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:50:20');
+INSERT INTO `sys_logininfor` VALUES (356, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-26 19:53:43');
+INSERT INTO `sys_logininfor` VALUES (357, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:53:52');
+INSERT INTO `sys_logininfor` VALUES (358, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-26 19:54:58');
+INSERT INTO `sys_logininfor` VALUES (359, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-11-26 19:55:04');
+INSERT INTO `sys_logininfor` VALUES (360, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:55:08');
+INSERT INTO `sys_logininfor` VALUES (361, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-26 19:59:17');
+INSERT INTO `sys_logininfor` VALUES (362, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 19:59:26');
+INSERT INTO `sys_logininfor` VALUES (363, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-11-26 20:01:09');
+INSERT INTO `sys_logininfor` VALUES (364, 'root', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-11-26 20:01:21');
+INSERT INTO `sys_logininfor` VALUES (365, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-12-06 00:35:08');
+INSERT INTO `sys_logininfor` VALUES (366, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-12-06 00:45:35');
+INSERT INTO `sys_logininfor` VALUES (367, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-12-06 00:49:11');
+INSERT INTO `sys_logininfor` VALUES (368, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-12-06 00:49:17');
+INSERT INTO `sys_logininfor` VALUES (369, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-12-06 00:49:40');
+INSERT INTO `sys_logininfor` VALUES (370, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-12-06 00:49:46');
+INSERT INTO `sys_logininfor` VALUES (371, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-12-06 00:52:45');
+INSERT INTO `sys_logininfor` VALUES (372, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '1', '验证码错误', '2024-12-06 00:52:51');
+INSERT INTO `sys_logininfor` VALUES (373, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-12-06 00:52:54');
+INSERT INTO `sys_logininfor` VALUES (374, '123451', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-12-06 00:53:18');
+INSERT INTO `sys_logininfor` VALUES (375, '1234561', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-12-06 00:53:25');
+INSERT INTO `sys_logininfor` VALUES (376, '1234561', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '退出成功', '2024-12-06 00:54:02');
+INSERT INTO `sys_logininfor` VALUES (377, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-12-06 00:54:08');
+INSERT INTO `sys_logininfor` VALUES (378, 'admin', '127.0.0.1', '内网IP', 'Chrome 13', 'Windows 10', '0', '登录成功', '2024-12-07 15:09:48');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -784,7 +852,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2043 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2044 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -881,8 +949,8 @@ INSERT INTO `sys_menu` VALUES (2010, '用户积分修改', 2007, 3, '#', '', NUL
 INSERT INTO `sys_menu` VALUES (2011, '用户积分删除', 2007, 4, '#', '', NULL, '', 1, 0, 'F', '0', '0', 'laboratory:points:remove', '#', 'admin', '2024-10-29 16:45:37', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2012, '用户积分导出', 2007, 5, '#', '', NULL, '', 1, 0, 'F', '0', '0', 'laboratory:points:export', '#', 'admin', '2024-10-29 16:45:37', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2013, '编辑介绍', 0, 2, 'introduce', '', NULL, '', 1, 0, 'M', '0', '0', '', 'edit', 'admin', '2024-10-31 11:07:21', 'admin', '2024-11-11 12:05:10', '');
-INSERT INTO `sys_menu` VALUES (2014, '编辑首页', 2013, 1, 'introduce', 'laboratory/introduce/index', NULL, '', 1, 0, 'C', '0', '0', 'laboratory:introduce:upload_introduce', 'clipboard', 'admin', '2024-10-31 11:09:37', 'admin', '2024-11-02 18:39:04', '');
-INSERT INTO `sys_menu` VALUES (2020, '方向介绍', 2013, 1, 'direction', 'laboratory/introduce/direction/index', NULL, '', 1, 0, 'C', '0', '0', 'laboratory:introduce:direction', 'clipboard', 'admin', '2024-11-02 22:57:29', '', NULL, '');
+INSERT INTO `sys_menu` VALUES (2014, '编辑首页', 2013, 1, 'introduce', 'laboratory/introduce/index', NULL, '', 1, 0, 'C', '0', '0', 'laboratory:introduce:upload', 'clipboard', 'admin', '2024-10-31 11:09:37', 'root', '2024-11-26 19:58:34', '');
+INSERT INTO `sys_menu` VALUES (2020, '方向介绍', 2013, 1, 'direction', 'laboratory/introduce/direction/index', NULL, '', 1, 0, 'C', '0', '0', 'laboratory:introduce:upload', 'clipboard', 'admin', '2024-11-02 22:57:29', 'root', '2024-11-26 19:58:39', '');
 INSERT INTO `sys_menu` VALUES (2021, '方向介绍', 0, 2, 'show', NULL, NULL, '', 1, 0, 'M', '0', '0', '', 'education', 'admin', '2024-11-02 23:06:01', 'admin', '2024-11-11 12:05:13', '');
 INSERT INTO `sys_menu` VALUES (2022, 'misc', 2021, 1, 'misc', 'laboratory/introduce/show/misc/index', NULL, '', 1, 0, 'C', '0', '0', '', 'education', 'admin', '2024-11-02 23:09:20', 'admin', '2024-11-02 23:25:34', '');
 INSERT INTO `sys_menu` VALUES (2023, 'pwn', 2021, 1, 'pwn', 'laboratory/introduce/show/pwn/index', NULL, '', 1, 0, 'C', '0', '0', '', 'education', 'admin', '2024-11-02 23:09:47', 'admin', '2024-11-02 23:26:39', '');
@@ -896,6 +964,7 @@ INSERT INTO `sys_menu` VALUES (2033, '积分证明材料修改', 2030, 3, '#', '
 INSERT INTO `sys_menu` VALUES (2034, '积分证明材料删除', 2030, 4, '#', '', NULL, '', 1, 0, 'F', '0', '0', 'laboratory:proofs:remove', '#', 'admin', '2024-11-04 14:44:10', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2035, '积分证明材料导出', 2030, 5, '#', '', NULL, '', 1, 0, 'F', '0', '0', 'laboratory:proofs:export', '#', 'admin', '2024-11-04 14:44:10', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2042, '积分认定', 0, 1, 'editImage', 'laboratory/proofs/edit/index', NULL, '', 1, 0, 'C', '0', '0', '', 'edit', 'admin', '2024-11-04 16:14:32', 'admin', '2024-11-04 16:19:51', '');
+INSERT INTO `sys_menu` VALUES (2043, 'ACM', 2021, 1, 'ACM', 'laboratory/introduce/show/acm/index', NULL, '', 1, 0, 'C', '0', '0', NULL, 'education', 'admin', '2024-12-06 00:36:35', '', NULL, '');
 
 -- ----------------------------
 -- Table structure for sys_notice
@@ -949,7 +1018,7 @@ CREATE TABLE `sys_oper_log`  (
   INDEX `idx_sys_oper_log_bt`(`business_type` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_s`(`status` ASC) USING BTREE,
   INDEX `idx_sys_oper_log_ot`(`oper_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 556 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 594 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -1410,6 +1479,44 @@ INSERT INTO `sys_oper_log` VALUES (552, '积分证明材料', 1, 'com.hndy.xl.co
 INSERT INTO `sys_oper_log` VALUES (553, '积分证明材料', 2, 'com.hndy.xl.controller.ProofsController.edit()', 'PUT', 1, '1234561', 'pwn', '/laboratory/proofs/update', '10.199.80.111', '内网IP', '{\"createTime\":\"2024-11-11 12:18:02\",\"materialContent\":\"<p><img src=\\\"/dev-api/profile/upload/2024/11/11/image-20241111110652943_20241111121744A002.png\\\"></p><p>测试组员进行图片的上传  啊</p>\",\"materialId\":15,\"params\":{},\"status\":\"0\",\"userId\":116,\"userName\":\"测试组员1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-11 12:18:06', 7);
 INSERT INTO `sys_oper_log` VALUES (554, '积分认定', 2, 'com.hndy.xl.controller.ProofsController.editCognizance()', 'PUT', 1, '123452', 'pwn', '/laboratory/proofs/cognizance', '10.199.80.111', '内网IP', '{\"createTime\":\"2024-11-11 12:18:02\",\"materialContent\":\"<p><img src=\\\"/dev-api/profile/upload/2024/11/11/image-20241111110652943_20241111121744A002.png\\\"></p><p>测试组员进行图片的上传  啊</p>\",\"materialId\":15,\"params\":{},\"points\":\"1\",\"status\":\"1\",\"updateBy\":\"115\",\"updateTime\":\"2024-11-11 12:18:36\",\"userId\":116,\"userName\":\"测试组员1\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-11 12:18:36', 20);
 INSERT INTO `sys_oper_log` VALUES (555, '角色管理', 2, 'com.hndy.xl.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '10.199.80.111', '内网IP', '{\"admin\":false,\"createTime\":\"2024-10-29 13:39:32\",\"dataScope\":\"3\",\"delFlag\":\"0\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"menuIds\":[1,100,1001,1002,1006,1035,1036,1037,1038,2007,2008,2012,2030,2031,2032,2033,2042,2013,2020,2021,2022,2023,2024,2025,2026],\"params\":{},\"roleId\":101,\"roleKey\":\"leader\",\"roleName\":\"组长\",\"roleSort\":0,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-11 12:19:36', 20);
+INSERT INTO `sys_oper_log` VALUES (556, '定时任务', 2, 'com.hndy.xl.quartz.controller.SysJobController.run()', 'PUT', 1, 'root', '湘岚', '/monitor/job/run', '127.0.0.1', '内网IP', '{\"jobGroup\":\"DEFAULT\",\"jobId\":100,\"misfirePolicy\":\"0\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-19 19:15:01', 42);
+INSERT INTO `sys_oper_log` VALUES (557, '用户管理', 5, 'com.hndy.xl.web.controller.system.SysUserController.export()', 'POST', 1, 'root', '湘岚', '/system/user/export', '127.0.0.1', '内网IP', '{\"pageSize\":\"10\",\"pageNum\":\"1\"}', NULL, 0, NULL, '2024-11-19 19:29:18', 1255);
+INSERT INTO `sys_oper_log` VALUES (558, '积分证明材料', 1, 'com.hndy.xl.controller.ProofsController.add()', 'POST', 1, 'root', '湘岚', '/laboratory/proofs', '127.0.0.1', '内网IP', '{\"createTime\":\"2024-11-19 19:35:59\",\"materialContent\":\"<p><img src=\\\"/dev-api/profile/upload/2024/11/19/image-20241111110805279_20241119193557A001.png\\\"></p>\",\"params\":{},\"userId\":100}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-19 19:35:59', 56);
+INSERT INTO `sys_oper_log` VALUES (559, '积分认定', 2, 'com.hndy.xl.controller.ProofsController.editCognizance()', 'PUT', 1, '123451', 'web', '/laboratory/proofs/cognizance', '127.0.0.1', '内网IP', '{\"createTime\":\"2024-11-19 19:35:59\",\"materialContent\":\"<p><img src=\\\"/dev-api/profile/upload/2024/11/19/image-20241111110805279_20241119193557A001.png\\\"></p>\",\"materialId\":16,\"params\":{},\"points\":\"1\",\"status\":\"1\",\"updateBy\":\"114\",\"updateTime\":\"2024-11-19 19:53:15\",\"userId\":100,\"userName\":\"测试老师\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-19 19:53:15', 40);
+INSERT INTO `sys_oper_log` VALUES (560, '积分证明材料', 1, 'com.hndy.xl.controller.ProofsController.add()', 'POST', 1, '123451', 'web', '/laboratory/proofs', '127.0.0.1', '内网IP', '{\"createTime\":\"2024-11-19 20:00:22\",\"params\":{},\"userId\":114}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-19 20:00:22', 14);
+INSERT INTO `sys_oper_log` VALUES (561, '用户积分', 5, 'com.hndy.xl.controller.UserPointsController.export()', 'POST', 1, 'root', '湘岚', '/laboratory/points/export', '127.0.0.1', '内网IP', '{\"pageSize\":\"10\",\"pageNum\":\"1\"}', NULL, 0, NULL, '2024-11-20 14:25:34', 653);
+INSERT INTO `sys_oper_log` VALUES (562, '角色管理', 2, 'com.hndy.xl.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'root', '湘岚', '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2024-10-29 13:38:26\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2030,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,108,500,1039,1040,1041,501,1042,1043,1044,1045,2031,2032,2033,2034,2007,2008,2009,2010,2011,2012,2042,2021,2022,2023,2024,2026,2025,2013,2014,2020,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112],\"params\":{},\"roleId\":100,\"roleKey\":\"teacher\",\"roleName\":\"老师\",\"roleSort\":0,\"status\":\"0\",\"updateBy\":\"root\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-20 14:41:34', 109);
+INSERT INTO `sys_oper_log` VALUES (563, '积分证明材料', 1, 'com.hndy.xl.controller.ProofsController.add()', 'POST', 1, 'root', '湘岚', '/laboratory/proofs', '127.0.0.1', '内网IP', '{\"createTime\":\"2024-11-20 15:52:43\",\"materialContent\":\"<p>测试积分证明材料的上传<img src=\\\"/dev-api/profile/upload/2024/11/20/image-20241111110805279_20241120155225A001.png\\\"></p>\",\"params\":{},\"userId\":100}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-20 15:52:43', 26);
+INSERT INTO `sys_oper_log` VALUES (564, '积分证明材料', 2, 'com.hndy.xl.controller.ProofsController.edit()', 'PUT', 1, 'root', '湘岚', '/laboratory/proofs/update', '127.0.0.1', '内网IP', '{\"createTime\":\"2024-11-20 15:52:43\",\"materialContent\":\"<p>测试修改积分证明材料</p><p><img src=\\\"/dev-api/profile/upload/2024/11/20/屏幕截图 2024-10-05 151710_20241120155315A002.png\\\"></p>\",\"materialId\":18,\"params\":{},\"status\":\"0\",\"userId\":100,\"userName\":\"测试老师\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-20 15:53:43', 15);
+INSERT INTO `sys_oper_log` VALUES (565, '积分认定', 2, 'com.hndy.xl.controller.ProofsController.editCognizance()', 'PUT', 1, 'root', '湘岚', '/laboratory/proofs/cognizance', '127.0.0.1', '内网IP', '{\"createTime\":\"2024-11-20 15:52:43\",\"materialContent\":\"<p>测试修改积分证明材料</p><p><img src=\\\"/dev-api/profile/upload/2024/11/20/屏幕截图 2024-10-05 151710_20241120155315A002.png\\\"></p>\",\"materialId\":18,\"params\":{},\"points\":\"4\",\"status\":\"1\",\"updateBy\":\"100\",\"updateTime\":\"2024-11-20 16:06:38\",\"userId\":100,\"userName\":\"测试老师\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-20 16:06:38', 31);
+INSERT INTO `sys_oper_log` VALUES (566, '积分证明材料', 3, 'com.hndy.xl.controller.ProofsController.remove()', 'DELETE', 1, 'root', '湘岚', '/laboratory/proofs/18', '127.0.0.1', '内网IP', '[18]', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-20 16:07:18', 13);
+INSERT INTO `sys_oper_log` VALUES (567, '角色管理', 2, 'com.hndy.xl.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2024-10-29 13:39:32\",\"dataScope\":\"3\",\"delFlag\":\"0\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"menuIds\":[1,100,1001,1002,1006,1035,1036,1037,1038,2007,2008,2012,2030,2031,2032,2033,2042,2013,2020,2021,2022,2023,2024,2025,2026],\"params\":{},\"roleId\":101,\"roleKey\":\"leader\",\"roleName\":\"组长\",\"roleSort\":0,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-26 19:54:10', 83);
+INSERT INTO `sys_oper_log` VALUES (568, '菜单管理', 2, 'com.hndy.xl.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'root', '湘岚', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"laboratory/introduce/index\",\"createTime\":\"2024-10-31 11:09:37\",\"icon\":\"clipboard\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2014,\"menuName\":\"编辑首页\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":2013,\"path\":\"introduce\",\"perms\":\"laboratory:introduce:upload\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"root\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-26 19:58:34', 40);
+INSERT INTO `sys_oper_log` VALUES (569, '菜单管理', 2, 'com.hndy.xl.web.controller.system.SysMenuController.edit()', 'PUT', 1, 'root', '湘岚', '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"laboratory/introduce/direction/index\",\"createTime\":\"2024-11-02 22:57:29\",\"icon\":\"clipboard\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuId\":2020,\"menuName\":\"方向介绍\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":2013,\"path\":\"direction\",\"perms\":\"laboratory:introduce:upload\",\"routeName\":\"\",\"status\":\"0\",\"updateBy\":\"root\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-26 19:58:39', 17);
+INSERT INTO `sys_oper_log` VALUES (570, '定时任务', 2, 'com.hndy.xl.quartz.controller.SysJobController.run()', 'PUT', 1, 'root', '湘岚', '/monitor/job/run', '127.0.0.1', '内网IP', '{\"jobGroup\":\"DEFAULT\",\"jobId\":100,\"misfirePolicy\":\"0\",\"params\":{}}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-11-26 20:01:49', 46);
+INSERT INTO `sys_oper_log` VALUES (571, '菜单管理', 1, 'com.hndy.xl.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"component\":\"laboratory/introduce/show/acm/index\",\"createBy\":\"admin\",\"icon\":\"education\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"ACM\",\"menuType\":\"C\",\"orderNum\":1,\"params\":{},\"parentId\":2021,\"path\":\"ACM\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-12-06 00:36:35', 29);
+INSERT INTO `sys_oper_log` VALUES (572, '部门管理', 1, 'com.hndy.xl.web.controller.system.SysDeptController.add()', 'POST', 1, 'admin', NULL, '/system/dept', '127.0.0.1', '内网IP', '{\"ancestors\":\"0,100,101\",\"children\":[],\"createBy\":\"admin\",\"deptName\":\"ACM\",\"orderNum\":7,\"params\":{},\"parentId\":101,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-12-06 00:48:05', 44);
+INSERT INTO `sys_oper_log` VALUES (573, '角色管理', 2, 'com.hndy.xl.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2024-10-29 13:39:32\",\"dataScope\":\"3\",\"delFlag\":\"0\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"menuIds\":[1,100,1001,1002,1006,1035,1036,1037,1038,2007,2008,2012,2030,2031,2032,2033,2042,2013,2020,2021,2022,2023,2024,2025,2026],\"params\":{},\"roleId\":101,\"roleKey\":\"leader\",\"roleName\":\"组长\",\"roleSort\":0,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-12-06 00:49:07', 80);
+INSERT INTO `sys_oper_log` VALUES (574, '用户管理', 5, 'com.hndy.xl.web.controller.system.SysUserController.export()', 'POST', 1, 'admin', NULL, '/system/user/export', '127.0.0.1', '内网IP', '{\"pageSize\":\"10\",\"pageNum\":\"1\"}', NULL, 0, NULL, '2024-12-06 00:49:55', 1471);
+INSERT INTO `sys_oper_log` VALUES (575, '用户管理', 5, 'com.hndy.xl.web.controller.system.SysUserController.export()', 'POST', 1, 'admin', NULL, '/system/user/export', '127.0.0.1', '内网IP', '{\"pageSize\":\"10\",\"pageNum\":\"1\"}', NULL, 0, NULL, '2024-12-06 00:50:35', 87);
+INSERT INTO `sys_oper_log` VALUES (576, '角色管理', 2, 'com.hndy.xl.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2024-10-29 13:39:32\",\"dataScope\":\"3\",\"delFlag\":\"0\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"menuIds\":[1,100,1001,1002,1006,1035,1036,1037,1038,2007,2008,2012,2030,2031,2032,2033,2042,2013,2020,2021,2022,2023,2024,2025,2026,2043],\"params\":{},\"roleId\":101,\"roleKey\":\"leader\",\"roleName\":\"组长\",\"roleSort\":0,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-12-06 00:52:12', 61);
+INSERT INTO `sys_oper_log` VALUES (577, '角色管理', 2, 'com.hndy.xl.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2024-10-29 13:38:26\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[1,2030,2,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,108,500,1039,1040,1041,501,1042,1043,1044,1045,2007,2008,2009,2010,2011,2012,2031,2032,2033,2034,2042,2013,2014,2020,2021,2022,2023,2024,2025,2026,2043,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112],\"params\":{},\"roleId\":100,\"roleKey\":\"teacher\",\"roleName\":\"老师\",\"roleSort\":0,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-12-06 00:52:17', 60);
+INSERT INTO `sys_oper_log` VALUES (578, '角色管理', 2, 'com.hndy.xl.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2024-10-29 13:39:56\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2007,2030,2008,2012,2031,2032,2033,2035,2021,2022,2023,2024,2025,2026,2043],\"params\":{},\"roleId\":102,\"roleKey\":\"crew\",\"roleName\":\"组员\",\"roleSort\":0,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-12-06 00:52:22', 38);
+INSERT INTO `sys_oper_log` VALUES (579, '用户积分', 5, 'com.hndy.xl.controller.UserPointsController.export()', 'POST', 1, '1234561', 'pwn', '/laboratory/points/export', '127.0.0.1', '内网IP', '{\"pageSize\":\"10\",\"pageNum\":\"1\"}', NULL, 0, NULL, '2024-12-06 00:53:37', 75);
+INSERT INTO `sys_oper_log` VALUES (580, '角色管理', 2, 'com.hndy.xl.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2024-10-29 13:39:56\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2007,2030,2008,2012,2031,2032,2033,2021,2022,2023,2024,2025,2026,2043],\"params\":{},\"roleId\":102,\"roleKey\":\"crew\",\"roleName\":\"组员\",\"roleSort\":0,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-12-06 00:54:23', 32);
+INSERT INTO `sys_oper_log` VALUES (581, '角色管理', 2, 'com.hndy.xl.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2024-10-29 13:39:32\",\"dataScope\":\"3\",\"delFlag\":\"0\",\"deptCheckStrictly\":false,\"flag\":false,\"menuCheckStrictly\":false,\"menuIds\":[1,100,1001,1002,1006,1035,1036,1037,1038,2007,2008,2012,2030,2031,2032,2033,2042,2013,2020,2021,2022,2023,2024,2025,2026,2043],\"params\":{},\"roleId\":101,\"roleKey\":\"leader\",\"roleName\":\"组长\",\"roleSort\":0,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-12-06 00:54:38', 28);
+INSERT INTO `sys_oper_log` VALUES (582, '角色管理', 2, 'com.hndy.xl.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2024-10-29 13:38:26\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[1,2030,2,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,108,500,1039,1040,1041,501,1042,1043,1044,1045,2007,2008,2009,2010,2011,2012,2031,2032,2033,2034,2042,2013,2014,2020,2021,2022,2023,2024,2025,2026,2043,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112],\"params\":{},\"roleId\":100,\"roleKey\":\"teacher\",\"roleName\":\"老师\",\"roleSort\":0,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-12-06 00:54:48', 33);
+INSERT INTO `sys_oper_log` VALUES (583, '角色管理', 2, 'com.hndy.xl.web.controller.system.SysRoleController.dataScope()', 'PUT', 1, 'admin', NULL, '/system/role/dataScope', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2024-10-29 13:39:32\",\"dataScope\":\"3\",\"delFlag\":\"0\",\"deptCheckStrictly\":false,\"deptIds\":[],\"flag\":false,\"menuCheckStrictly\":false,\"params\":{},\"roleId\":101,\"roleKey\":\"leader\",\"roleName\":\"组长\",\"roleSort\":0,\"status\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-12-06 00:55:05', 19);
+INSERT INTO `sys_oper_log` VALUES (584, '用户管理', 6, 'com.hndy.xl.web.controller.system.SysUserController.importData()', 'POST', 1, 'admin', NULL, '/system/user/importData', '127.0.0.1', '内网IP', '{\"updateSupport\":\"0\"}', NULL, 1, '很抱歉，导入失败！共 34 条数据格式不正确，错误如下：<br/>1、账号 22406020136 导入失败：\r\n### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\r\n### The error may exist in com/hndy/xl/system/mapper/UserPointMapper.java (best guess)\r\n### The error may involve com.hndy.xl.system.mapper.UserPointMapper.addPoints-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO t_user_points(dept_id, user_id, update_time) VALUES(?, ?, sysdate())\r\n### Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\n; Column \'dept_id\' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null<br/>2、账号 22407010327 导入失败：\r\n### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\r\n### The error may exist in com/hndy/xl/system/mapper/UserPointMapper.java (best guess)\r\n### The error may involve com.hndy.xl.system.mapper.UserPointMapper.addPoints-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO t_user_points(dept_id, user_id, update_time) VALUES(?, ?, sysdate())\r\n### Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\n; Column \'dept_id\' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null<br/>3、账号 24405090123 导入失败：\r\n### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\r\n### The error may exist in com/hndy/xl/system/mapper/UserPointMapper.java (best guess)\r\n### The error may involve com.hndy.xl.system.mapper.UserPointMapper.addPoints-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO t_user_points(dept_id, user_id, update_time) VALUES(?, ?, sysdate())\r\n### Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'dept_id\' cannot be null\n; Column \'dept_id\' canno', '2024-12-07 15:10:07', 7162);
+INSERT INTO `sys_oper_log` VALUES (585, '用户管理', 6, 'com.hndy.xl.web.controller.system.SysUserController.importData()', 'POST', 1, 'admin', NULL, '/system/user/importData', '127.0.0.1', '内网IP', '{\"updateSupport\":\"0\"}', NULL, 1, '很抱歉，导入失败！共 34 条数据格式不正确，错误如下：<br/>1、账号 22406020136 已存在<br/>2、账号 22407010327 已存在<br/>3、账号 24405090123 已存在<br/>4、账号 23405010117 已存在<br/>5、账号 22407010627 已存在<br/>6、账号 24405090234 已存在<br/>7、账号 24405090240 已存在<br/>8、账号 23405080244 已存在<br/>9、账号 24405090350 已存在<br/>10、账号 24405090141 已存在<br/>11、账号 24405080149 已存在<br/>12、账号 24405090230 已存在<br/>13、账号 23405010132 已存在<br/>14、账号 23405010122 已存在<br/>15、账号 23405080114 已存在<br/>16、账号 24405090303 已存在<br/>17、账号 23405010336 已存在<br/>18、账号 24405090313 已存在<br/>19、账号 24405090135 已存在<br/>20、账号 24405090148 已存在<br/>21、账号 24405010102 已存在<br/>22、账号 23405010330 已存在<br/>23、账号 23405010347 已存在<br/>24、账号 22407010624 已存在<br/>25、账号 24405090305 已存在<br/>26、账号 24405090320 已存在<br/>27、账号 22407010139 已存在<br/>28、账号 24405090335 已存在<br/>29、账号 24405090324 已存在<br/>30、账号 24405090311 已存在<br/>31、账号 23405010221 已存在<br/>32、账号 24405090317 已存在<br/>33、账号 23405010102 已存在<br/>34、账号 24405090344 已存在', '2024-12-07 15:10:45', 229);
+INSERT INTO `sys_oper_log` VALUES (586, '用户管理', 6, 'com.hndy.xl.web.controller.system.SysUserController.importData()', 'POST', 1, 'admin', NULL, '/system/user/importData', '127.0.0.1', '内网IP', '{\"updateSupport\":\"0\"}', '{\"msg\":\"恭喜您，数据已全部导入成功！共 34 条，数据如下：<br/>1、账号 22406020136 导入成功<br/>2、账号 22407010327 导入成功<br/>3、账号 24405090123 导入成功<br/>4、账号 23405010117 导入成功<br/>5、账号 22407010627 导入成功<br/>6、账号 24405090234 导入成功<br/>7、账号 24405090240 导入成功<br/>8、账号 23405080244 导入成功<br/>9、账号 24405090350 导入成功<br/>10、账号 24405090141 导入成功<br/>11、账号 24405080149 导入成功<br/>12、账号 24405090230 导入成功<br/>13、账号 23405010132 导入成功<br/>14、账号 23405010122 导入成功<br/>15、账号 23405080114 导入成功<br/>16、账号 24405090303 导入成功<br/>17、账号 23405010336 导入成功<br/>18、账号 24405090313 导入成功<br/>19、账号 24405090135 导入成功<br/>20、账号 24405090148 导入成功<br/>21、账号 24405010102 导入成功<br/>22、账号 23405010330 导入成功<br/>23、账号 23405010347 导入成功<br/>24、账号 22407010624 导入成功<br/>25、账号 24405090305 导入成功<br/>26、账号 24405090320 导入成功<br/>27、账号 22407010139 导入成功<br/>28、账号 24405090335 导入成功<br/>29、账号 24405090324 导入成功<br/>30、账号 24405090311 导入成功<br/>31、账号 23405010221 导入成功<br/>32、账号 24405090317 导入成功<br/>33、账号 23405010102 导入成功<br/>34、账号 24405090344 导入成功\",\"code\":200}', 0, NULL, '2024-12-07 15:14:06', 6851);
+INSERT INTO `sys_oper_log` VALUES (587, '用户管理', 6, 'com.hndy.xl.web.controller.system.SysUserController.importData()', 'POST', 1, 'admin', NULL, '/system/user/importData', '127.0.0.1', '内网IP', '{\"updateSupport\":\"0\"}', NULL, 1, '很抱歉，导入失败！共 34 条数据格式不正确，错误如下：<br/>1、账号 22406020136 导入失败：\r\n### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'user_id\' cannot be null\r\n### The error may exist in com/hndy/xl/system/mapper/UserPointMapper.java (best guess)\r\n### The error may involve com.hndy.xl.system.mapper.UserPointMapper.addUserPoints-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO t_user_points(user_id, update_time) VALUES( ?, sysdate())\r\n### Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'user_id\' cannot be null\n; Column \'user_id\' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column \'user_id\' cannot be null<br/>2、账号 22407010327 导入失败：\r\n### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'user_id\' cannot be null\r\n### The error may exist in com/hndy/xl/system/mapper/UserPointMapper.java (best guess)\r\n### The error may involve com.hndy.xl.system.mapper.UserPointMapper.addUserPoints-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO t_user_points(user_id, update_time) VALUES( ?, sysdate())\r\n### Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'user_id\' cannot be null\n; Column \'user_id\' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column \'user_id\' cannot be null<br/>3、账号 24405090123 导入失败：\r\n### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'user_id\' cannot be null\r\n### The error may exist in com/hndy/xl/system/mapper/UserPointMapper.java (best guess)\r\n### The error may involve com.hndy.xl.system.mapper.UserPointMapper.addUserPoints-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO t_user_points(user_id, update_time) VALUES( ?, sysdate())\r\n### Cause: java.sql.SQLIntegrityConstraintViolationException: Column \'user_id\' cannot be null\n; Column \'user_id\' cannot be null; nested exc', '2024-12-07 15:17:43', 5135);
+INSERT INTO `sys_oper_log` VALUES (588, '用户管理', 6, 'com.hndy.xl.web.controller.system.SysUserController.importData()', 'POST', 1, 'admin', NULL, '/system/user/importData', '127.0.0.1', '内网IP', '{\"updateSupport\":\"0\"}', NULL, 1, '很抱歉，导入失败！共 34 条数据格式不正确，错误如下：<br/>1、账号 22406020136 导入失败：\r\n### Error updating database.  Cause: java.sql.SQLException: Field \'dept_id\' doesn\'t have a default value\r\n### The error may exist in com/hndy/xl/system/mapper/UserPointMapper.java (best guess)\r\n### The error may involve com.hndy.xl.system.mapper.UserPointMapper.addUserPoints-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO t_user_points(user_id, update_time) VALUES( ?, sysdate())\r\n### Cause: java.sql.SQLException: Field \'dept_id\' doesn\'t have a default value\n; Field \'dept_id\' doesn\'t have a default value; nested exception is java.sql.SQLException: Field \'dept_id\' doesn\'t have a default value<br/>2、账号 22407010327 导入失败：\r\n### Error updating database.  Cause: java.sql.SQLException: Field \'dept_id\' doesn\'t have a default value\r\n### The error may exist in com/hndy/xl/system/mapper/UserPointMapper.java (best guess)\r\n### The error may involve com.hndy.xl.system.mapper.UserPointMapper.addUserPoints-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO t_user_points(user_id, update_time) VALUES( ?, sysdate())\r\n### Cause: java.sql.SQLException: Field \'dept_id\' doesn\'t have a default value\n; Field \'dept_id\' doesn\'t have a default value; nested exception is java.sql.SQLException: Field \'dept_id\' doesn\'t have a default value<br/>3、账号 24405090123 导入失败：\r\n### Error updating database.  Cause: java.sql.SQLException: Field \'dept_id\' doesn\'t have a default value\r\n### The error may exist in com/hndy/xl/system/mapper/UserPointMapper.java (best guess)\r\n### The error may involve com.hndy.xl.system.mapper.UserPointMapper.addUserPoints-Inline\r\n### The error occurred while setting parameters\r\n### SQL: INSERT INTO t_user_points(user_id, update_time) VALUES( ?, sysdate())\r\n### Cause: java.sql.SQLException: Field \'dept_id\' doesn\'t have a default value\n; Field \'dept_id\' doesn\'t have a default value; nested exception is java.sql.SQLException: Field \'dept_id\' doesn\'t have a default value<br/', '2024-12-07 15:19:49', 5166);
+INSERT INTO `sys_oper_log` VALUES (589, '用户管理', 6, 'com.hndy.xl.web.controller.system.SysUserController.importData()', 'POST', 1, 'admin', NULL, '/system/user/importData', '127.0.0.1', '内网IP', '{\"updateSupport\":\"0\"}', NULL, 1, '很抱歉，导入失败！共 34 条数据格式不正确，错误如下：<br/>1、账号 22406020136 导入失败：\r\n### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'insert into t_user_points(\n			 \n			create_time\n		)values(\n			 \n			sysdate()\n		)\' at line 30\r\n### The error may exist in file [D:\\me\\project\\Java\\20241029131451\\xl\\xl-system\\target\\classes\\mapper\\system\\SysUserMapper.xml]\r\n### The error may involve com.hndy.xl.system.mapper.SysUserMapper.insertUser-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into sys_user(                  user_name,       nick_name,       email,             phonenumber,       sex,       password,       status,       create_by,            create_time    )values(                  ?,       ?,       ?,             ?,       ?,       ?,       ?,       ?,            sysdate()    )    insert into t_user_points(         create_time   )values(         sysdate()   )\r\n### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'insert into t_user_points(\n			 \n			create_time\n		)values(\n			 \n			sysdate()\n		)\' at line 30\n; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'insert into t_user_points(\n			 \n			create_time\n		)values(\n			 \n			sysdate()\n		)\' at line 30<br/>2、账号 22407010327 导入失败：\r\n### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'insert into t_user_points(\n			 \n			create_time\n		)values(\n			 \n			sysdate()\n		)\' at line 30\r\n### The error may exist in file [D:\\me\\project\\Java\\20241029131451\\xl\\xl-', '2024-12-07 15:24:35', 4648);
+INSERT INTO `sys_oper_log` VALUES (590, '用户管理', 6, 'com.hndy.xl.web.controller.system.SysUserController.importData()', 'POST', 1, 'admin', NULL, '/system/user/importData', '127.0.0.1', '内网IP', '{\"updateSupport\":\"0\"}', '{\"msg\":\"恭喜您，数据已全部导入成功！共 34 条，数据如下：<br/>1、账号 22406020136 导入成功<br/>2、账号 22407010327 导入成功<br/>3、账号 24405090123 导入成功<br/>4、账号 23405010117 导入成功<br/>5、账号 22407010627 导入成功<br/>6、账号 24405090234 导入成功<br/>7、账号 24405090240 导入成功<br/>8、账号 23405080244 导入成功<br/>9、账号 24405090350 导入成功<br/>10、账号 24405090141 导入成功<br/>11、账号 24405080149 导入成功<br/>12、账号 24405090230 导入成功<br/>13、账号 23405010132 导入成功<br/>14、账号 23405010122 导入成功<br/>15、账号 23405080114 导入成功<br/>16、账号 24405090303 导入成功<br/>17、账号 23405010336 导入成功<br/>18、账号 24405090313 导入成功<br/>19、账号 24405090135 导入成功<br/>20、账号 24405090148 导入成功<br/>21、账号 24405010102 导入成功<br/>22、账号 23405010330 导入成功<br/>23、账号 23405010347 导入成功<br/>24、账号 22407010624 导入成功<br/>25、账号 24405090305 导入成功<br/>26、账号 24405090320 导入成功<br/>27、账号 22407010139 导入成功<br/>28、账号 24405090335 导入成功<br/>29、账号 24405090324 导入成功<br/>30、账号 24405090311 导入成功<br/>31、账号 23405010221 导入成功<br/>32、账号 24405090317 导入成功<br/>33、账号 23405010102 导入成功<br/>34、账号 24405090344 导入成功\",\"code\":200}', 0, NULL, '2024-12-07 15:26:11', 7023);
+INSERT INTO `sys_oper_log` VALUES (591, '用户管理', 6, 'com.hndy.xl.web.controller.system.SysUserController.importData()', 'POST', 1, 'admin', NULL, '/system/user/importData', '127.0.0.1', '内网IP', '{\"updateSupport\":\"0\"}', '{\"msg\":\"恭喜您，数据已全部导入成功！共 34 条，数据如下：<br/>1、账号 22406020136 导入成功<br/>2、账号 22407010327 导入成功<br/>3、账号 24405090123 导入成功<br/>4、账号 23405010117 导入成功<br/>5、账号 22407010627 导入成功<br/>6、账号 24405090234 导入成功<br/>7、账号 24405090240 导入成功<br/>8、账号 23405080244 导入成功<br/>9、账号 24405090350 导入成功<br/>10、账号 24405090141 导入成功<br/>11、账号 24405080149 导入成功<br/>12、账号 24405090230 导入成功<br/>13、账号 23405010132 导入成功<br/>14、账号 23405010122 导入成功<br/>15、账号 23405080114 导入成功<br/>16、账号 24405090303 导入成功<br/>17、账号 23405010336 导入成功<br/>18、账号 24405090313 导入成功<br/>19、账号 24405090135 导入成功<br/>20、账号 24405090148 导入成功<br/>21、账号 24405010102 导入成功<br/>22、账号 23405010330 导入成功<br/>23、账号 23405010347 导入成功<br/>24、账号 22407010624 导入成功<br/>25、账号 24405090305 导入成功<br/>26、账号 24405090320 导入成功<br/>27、账号 22407010139 导入成功<br/>28、账号 24405090335 导入成功<br/>29、账号 24405090324 导入成功<br/>30、账号 24405090311 导入成功<br/>31、账号 23405010221 导入成功<br/>32、账号 24405090317 导入成功<br/>33、账号 23405010102 导入成功<br/>34、账号 24405090344 导入成功\",\"code\":200}', 0, NULL, '2024-12-07 15:29:45', 7292);
+INSERT INTO `sys_oper_log` VALUES (592, '用户管理', 2, 'com.hndy.xl.web.controller.system.SysUserController.edit()', 'PUT', 1, 'admin', NULL, '/system/user', '127.0.0.1', '内网IP', '{\"admin\":false,\"avatar\":\"\",\"createBy\":\"admin\",\"createTime\":\"2024-12-07 15:29:39\",\"delFlag\":\"0\",\"deptId\":205,\"email\":\"2908453829@qq.com\",\"loginIp\":\"\",\"nickName\":\"张以琳\",\"params\":{},\"phonenumber\":\"15369958967\",\"postIds\":[],\"roleIds\":[],\"roles\":[],\"sex\":\"0\",\"status\":\"0\",\"updateBy\":\"admin\",\"userId\":288,\"userName\":\"22406020136\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2024-12-07 15:30:47', 58);
+INSERT INTO `sys_oper_log` VALUES (593, '用户管理', 6, 'com.hndy.xl.web.controller.system.SysUserController.importData()', 'POST', 1, 'admin', NULL, '/system/user/importData', '127.0.0.1', '内网IP', '{\"updateSupport\":\"0\"}', '{\"msg\":\"恭喜您，数据已全部导入成功！共 34 条，数据如下：<br/>1、账号 22406020136 导入成功<br/>2、账号 22407010327 导入成功<br/>3、账号 24405090123 导入成功<br/>4、账号 23405010117 导入成功<br/>5、账号 22407010627 导入成功<br/>6、账号 24405090234 导入成功<br/>7、账号 24405090240 导入成功<br/>8、账号 23405080244 导入成功<br/>9、账号 24405090350 导入成功<br/>10、账号 24405090141 导入成功<br/>11、账号 24405080149 导入成功<br/>12、账号 24405090230 导入成功<br/>13、账号 23405010132 导入成功<br/>14、账号 23405010122 导入成功<br/>15、账号 23405080114 导入成功<br/>16、账号 24405090303 导入成功<br/>17、账号 23405010336 导入成功<br/>18、账号 24405090313 导入成功<br/>19、账号 24405090135 导入成功<br/>20、账号 24405090148 导入成功<br/>21、账号 24405010102 导入成功<br/>22、账号 23405010330 导入成功<br/>23、账号 23405010347 导入成功<br/>24、账号 22407010624 导入成功<br/>25、账号 24405090305 导入成功<br/>26、账号 24405090320 导入成功<br/>27、账号 22407010139 导入成功<br/>28、账号 24405090335 导入成功<br/>29、账号 24405090324 导入成功<br/>30、账号 24405090311 导入成功<br/>31、账号 23405010221 导入成功<br/>32、账号 24405090317 导入成功<br/>33、账号 23405010102 导入成功<br/>34、账号 24405090344 导入成功\",\"code\":200}', 0, NULL, '2024-12-07 15:32:58', 5172);
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -1463,9 +1570,9 @@ CREATE TABLE `sys_role`  (
 -- ----------------------------
 INSERT INTO `sys_role` VALUES (1, '超级管理员', 'admin', 1, '1', 1, 1, '0', '0', 'admin', '2024-10-29 12:56:12', '', NULL, '超级管理员');
 INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '2', 0, 0, '1', '0', 'admin', '2024-10-29 12:56:12', 'admin', '2024-10-29 20:41:21', '普通角色');
-INSERT INTO `sys_role` VALUES (100, '老师', 'teacher', 0, '1', 1, 1, '0', '0', 'admin', '2024-10-29 13:38:26', 'admin', '2024-11-11 12:06:10', NULL);
-INSERT INTO `sys_role` VALUES (101, '组长', 'leader', 0, '3', 0, 0, '0', '0', 'admin', '2024-10-29 13:39:32', 'admin', '2024-11-11 12:19:36', NULL);
-INSERT INTO `sys_role` VALUES (102, '组员', 'crew', 0, '1', 1, 1, '0', '0', 'admin', '2024-10-29 13:39:56', 'admin', '2024-11-11 12:06:53', NULL);
+INSERT INTO `sys_role` VALUES (100, '老师', 'teacher', 0, '1', 1, 1, '0', '0', 'admin', '2024-10-29 13:38:26', 'admin', '2024-12-06 00:54:48', NULL);
+INSERT INTO `sys_role` VALUES (101, '组长', 'leader', 0, '3', 0, 0, '0', '0', 'admin', '2024-10-29 13:39:32', 'admin', '2024-12-06 00:55:05', NULL);
+INSERT INTO `sys_role` VALUES (102, '组员', 'crew', 0, '1', 1, 1, '0', '0', 'admin', '2024-10-29 13:39:56', 'admin', '2024-12-06 00:54:23', NULL);
 
 -- ----------------------------
 -- Table structure for sys_role_dept
@@ -1646,8 +1753,8 @@ INSERT INTO `sys_role_menu` VALUES (100, 2031);
 INSERT INTO `sys_role_menu` VALUES (100, 2032);
 INSERT INTO `sys_role_menu` VALUES (100, 2033);
 INSERT INTO `sys_role_menu` VALUES (100, 2034);
-INSERT INTO `sys_role_menu` VALUES (100, 2035);
 INSERT INTO `sys_role_menu` VALUES (100, 2042);
+INSERT INTO `sys_role_menu` VALUES (100, 2043);
 INSERT INTO `sys_role_menu` VALUES (101, 1);
 INSERT INTO `sys_role_menu` VALUES (101, 100);
 INSERT INTO `sys_role_menu` VALUES (101, 1001);
@@ -1673,6 +1780,7 @@ INSERT INTO `sys_role_menu` VALUES (101, 2031);
 INSERT INTO `sys_role_menu` VALUES (101, 2032);
 INSERT INTO `sys_role_menu` VALUES (101, 2033);
 INSERT INTO `sys_role_menu` VALUES (101, 2042);
+INSERT INTO `sys_role_menu` VALUES (101, 2043);
 INSERT INTO `sys_role_menu` VALUES (102, 2007);
 INSERT INTO `sys_role_menu` VALUES (102, 2008);
 INSERT INTO `sys_role_menu` VALUES (102, 2012);
@@ -1686,7 +1794,7 @@ INSERT INTO `sys_role_menu` VALUES (102, 2030);
 INSERT INTO `sys_role_menu` VALUES (102, 2031);
 INSERT INTO `sys_role_menu` VALUES (102, 2032);
 INSERT INTO `sys_role_menu` VALUES (102, 2033);
-INSERT INTO `sys_role_menu` VALUES (102, 2035);
+INSERT INTO `sys_role_menu` VALUES (102, 2043);
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -1694,7 +1802,7 @@ INSERT INTO `sys_role_menu` VALUES (102, 2035);
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user`  (
   `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  `dept_id` bigint NULL DEFAULT NULL COMMENT '部门ID',
+  `dept_id` bigint NULL DEFAULT NULL COMMENT '方向ID',
   `user_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户账号',
   `nick_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户昵称',
   `user_type` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '00' COMMENT '用户类型（00系统用户）',
@@ -1714,18 +1822,52 @@ CREATE TABLE `sys_user`  (
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`user_id`) USING BTREE,
   INDEX `dept_id`(`dept_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 118 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 356 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '开发人员', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '10.199.80.111', '2024-11-11 12:19:04', 'admin', '2024-10-29 12:56:12', '', '2024-11-11 12:19:04', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '开发人员', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2024-12-07 15:09:48', 'admin', '2024-10-29 12:56:12', '', '2024-12-07 15:09:48', '管理员');
 INSERT INTO `sys_user` VALUES (2, 200, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '1', '2', '127.0.0.1', '2024-10-29 12:56:12', 'admin', '2024-10-29 12:56:12', 'admin', '2024-11-11 10:30:42', '测试员');
-INSERT INTO `sys_user` VALUES (100, 101, 'root', '测试老师', '00', '', '', '0', '', '$2a$10$SJEkh714oRAUZxNj73TrQezuKgVTeMq.Rkh.enLzVfXKdyDSUo82G', '0', '0', '10.199.80.111', '2024-11-11 12:07:11', 'admin', '2024-10-29 13:40:37', 'admin', '2024-11-11 12:07:11', NULL);
-INSERT INTO `sys_user` VALUES (114, 200, '123451', '测试组长1', '00', '', '', '0', '', '$2a$10$oC6bouRnUEds/ETXmUeU1u31SXiaJOKzgnAA4F.oNBK1GLMiWaDya', '0', '0', '10.199.80.111', '2024-11-11 12:13:58', 'admin', '2024-11-11 12:11:46', '', '2024-11-11 12:13:58', NULL);
+INSERT INTO `sys_user` VALUES (100, 101, 'root', '测试老师', '00', '', '', '0', '', '$2a$10$SJEkh714oRAUZxNj73TrQezuKgVTeMq.Rkh.enLzVfXKdyDSUo82G', '0', '0', '127.0.0.1', '2024-11-26 20:01:22', 'admin', '2024-10-29 13:40:37', 'admin', '2024-11-26 20:01:21', NULL);
+INSERT INTO `sys_user` VALUES (114, 200, '123451', '测试组长1', '00', '', '', '0', '', '$2a$10$oC6bouRnUEds/ETXmUeU1u31SXiaJOKzgnAA4F.oNBK1GLMiWaDya', '0', '0', '127.0.0.1', '2024-12-06 00:52:55', 'admin', '2024-11-11 12:11:46', '', '2024-12-06 00:52:54', NULL);
 INSERT INTO `sys_user` VALUES (115, 201, '123452', '测试组长2', '00', '', '', '0', '', '$2a$10$wB8wheOVaZ7/LqRp0kotLut1FAwBMfLyVl5k.s4nKkqrkPbFhyTI2', '0', '0', '10.199.80.111', '2024-11-11 12:18:22', 'admin', '2024-11-11 12:12:09', '', '2024-11-11 12:18:22', NULL);
-INSERT INTO `sys_user` VALUES (116, 201, '1234561', '测试组员1', '00', '', '', '0', '', '$2a$10$ziYdWYXW2s10Gg6d4CrTzusDfODn1/d81uiHJgWiDZwq1Js4MEQsW', '0', '0', '10.199.80.111', '2024-11-11 12:17:32', 'admin', '2024-11-11 12:12:36', 'admin', '2024-11-11 12:17:31', NULL);
+INSERT INTO `sys_user` VALUES (116, 201, '1234561', '测试组员1', '00', '', '', '0', '', '$2a$10$ziYdWYXW2s10Gg6d4CrTzusDfODn1/d81uiHJgWiDZwq1Js4MEQsW', '0', '0', '127.0.0.1', '2024-12-06 00:53:25', 'admin', '2024-11-11 12:12:36', 'admin', '2024-12-06 00:53:25', NULL);
 INSERT INTO `sys_user` VALUES (117, 200, '1234562', '测试组员2', '00', '', '', '0', '', '$2a$10$5wHk7.NE2ozBmMJFI55druRjgXULdFeIxas9pdOQQDUzM.LEthHO.', '0', '0', '', NULL, 'admin', '2024-11-11 12:13:31', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (322, 101, '22406020136', '张以琳', '00', '2908453829@qq.com', '15369958967', '0', '', '$2a$10$CNEqCms7rG8BWItk4qNWqOemykeNmNjygvJ7HRthdGQ1oXAmI0Cwq', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:54', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (323, 101, '22407010327', '潘越', '00', '350033951@qq.com', '18932389060', '1', '', '$2a$10$EVd.kHXPg/E9gPIXSZzJGOJHrSUpF53ZXLjjfkeQvnlk1ROi3dUlS', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:54', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (324, 101, '24405090123', '王淼', '00', '1878204957@qq.com', '13940938578', '1', '', '$2a$10$4wTu5tbxzIjGT7FZJkBQmO5peVTLuX/2vTNxdxfghZOKkaU/Cp5sq', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:54', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (325, 101, '23405010117', '唐旖', '00', '2401907227@qq.com', '19719897882', '1', '', '$2a$10$YzhBSiy9YUM65WfKQIDu9O/r2FlZB9vs.W2pCtn.qNbQPAtIhR4sC', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:54', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (326, 101, '22407010627', '熊颖希', '00', '450807057@qq.com', '18827858273', '1', '', '$2a$10$VA5FbybRAx8AnZv1sVS9L.OUtPrbpcjZ9d.TYgu4YgBS/kXAhg.ta', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:54', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (327, 101, '24405090234', '张智涵', '00', '3189276328@qq.com', '13287397899', '0', '', '$2a$10$wlrM/mOgReiFkQixbEyCeOP20EFyDgyvMclKv8k7ENsB2tFjN1qYe', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:55', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (328, 101, '24405090240', '王晨宇', '00', '2310283597@qq.com', '13107217205', '0', '', '$2a$10$c6XyNrVJMs4kmTb/HTi4uu2FfOxwklUoXtaIIORDxmBQ7FkwqteB.', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:55', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (329, 101, '23405080244', '周文杰', '00', '2256475223@qq.com', '15673415158', '0', '', '$2a$10$hGw51nGoTEyKM/6YZ3jivOgMvTajMg3AyI2LFTcjr5ixJSybWyGy2', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:55', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (330, 101, '24405090350', '易度宇', '00', '2832876089@qq.com', '15211780849', '0', '', '$2a$10$hcjv2n4TcscTstpiOZb/Ve5uHd5NUxVkYKnJCLdIREiQmGb77rQ9O', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:55', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (331, 101, '24405090141', '陈志豪', '00', '1051297919@qq.com', '15371791573', '0', '', '$2a$10$e6v3Ku79CQc6vxa48xHNGuiW9dEdkK/BU.MK6GCYsnuZftZ1c5a6C', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:55', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (332, 101, '24405080149', '艾凡琦', '00', '3493729266@qq.com', '19923910403', '0', '', '$2a$10$utSNHZEfbCl5H.5FTggsfuBbzrxgxF7Q7lflHbz/QmekEvyI.vF8C', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:55', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (333, 101, '24405090230', '徐展坤', '00', '1484115644@qq.com', '15835657864', '0', '', '$2a$10$SwOCp44vgNUifCuBVNqrpe38e0O0/.mLZsKmlkg2Ku792QXMJYRsq', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:55', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (334, 101, '23405010132', '刘坤浩', '00', '2770133542@qq.com', '17363344914', '0', '', '$2a$10$64jf1SvHFZUdF1HjQYx4O.ZAeqW0fjwA8Pu0CHdrh9mOkce51dP6a', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:55', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (335, 101, '23405010122', '徐民城', '00', '1692812799@qq.com', '19313178169', '0', '', '$2a$10$VuslEIEKhA/X20YAONLWYuVGBpWhu4odQ0.XnWSa/fgykIAJiRGYa', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:56', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (336, 101, '23405080114', '曾嘉文', '00', '1538342331@qq.com', '13367482782', '1', '', '$2a$10$3OnLhw6GTHvvOO8rlxhNZ.KANs7HCi2NX5EIAS/ZtlDquSGnG8YKa', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:56', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (337, 101, '24405090303', '罗嘉月', '00', '3044570478@qq.com', '15200332533', '1', '', '$2a$10$Ch52Q2HuoinMOXjyUBi1VeeYpLJlsS0AhrjupeqUFZpjsdHiOiBSa', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:56', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (338, 101, '23405010336', '许强', '00', '2790231925@qq.com', '15367090472', '0', '', '$2a$10$DOG3Xjb8pRve24Eg1XrFHO09s5idPQYSHzU2GvGOlv/j6Meb03eAq', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:56', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (339, 101, '24405090313', '柏佳仪', '00', '1271408196@qq.com', '15399849916', '1', '', '$2a$10$4J4xD4BijLJsiatxXArfe.JeZLXnktzNt/7DJVZ9Y2zAmSmfO2dsC', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:56', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (340, 101, '24405090135', '高佳旭', '00', '1123118707@qq.com', '13081088561', '0', '', '$2a$10$XnF9rk8mlO0Zv3NJ/OSXa.uTF67vTnOgRYSMdDCWRkJggOdC1UeEu', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:56', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (341, 101, '24405090148', '杨家辉', '00', '1052033783@qq.com', '19198071689', '0', '', '$2a$10$bebROKplu.hNU4Oi04Wff.9oh5oDbW2mVqd8RPICkIFCbeBpTi33W', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:56', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (342, 101, '24405010102', '李梦晗', '00', '3162667857@qq.com', '18912176089', '1', '', '$2a$10$zsNaOAhRrn4ZPnhxfKu7oe8wYNPSaBfLL.OTmr6efGWr7AVXgGgYW', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:57', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (343, 101, '23405010330', '徐鹏', '00', '2176302180@qq.com', '17807343064', '0', '', '$2a$10$AaSHSx8YIWqcaoAQLb6mOu4392c.TyT.ZOXrSQUEb6QG.VmzR3dAK', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:57', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (344, 101, '23405010347', '张佑铭', '00', '1245317602@qq.com', '19189658925', '0', '', '$2a$10$qTyRGrY3ileY1UmPr./yZeV4AD5WYVMdaGutSTFi9LzRpekQr/fh2', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:57', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (345, 101, '22407010624', '曾鸣', '00', '3067710031@qq.com', '18397730519', '1', '', '$2a$10$9UHUIR8c8ygv2Y6lcyS2mOr.F3DCVfjRgZIUFbBmL/sm31ppL4usu', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:57', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (346, 101, '24405090305', '黄棋', '00', '313418616@qq.com', '19186993176', '1', '', '$2a$10$J.5L.gCzqV8Qdl4VKjxF4.jb3RCELdsqgFP8fH.gXrTZARwfYobji', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:57', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (347, 101, '24405090320', '向宸皓', '00', '2078474483@qq.com', '19174375120', '0', '', '$2a$10$65c1saRWm4SQBXm9sEc.a.eQ7Uh8TNd/w8XexgDy65REXdtlcOtHm', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:57', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (348, 101, '22407010139', '戴林翰', '00', '3280406626@qq.com', '15576614589', '0', '', '$2a$10$PfThG3yo2tccNWxsQxuLtOW69OGvOBC8Fir3xJ61fDK3I0/vbKmqq', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:57', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (349, 101, '24405090335', '戚建稳', '00', '2240021710@qq.com', '18565128476', '0', '', '$2a$10$RFN7C8I5LapasDgU499mOuuaEQVrTnF5t3ztuw15JLCoDcxcs5pLO', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:58', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (350, 101, '24405090324', '龙伟豪', '00', '3504630173@qq.com', '15116594722', '0', '', '$2a$10$sQOK7IArwcJgKkpynGw.zOIridrOetLAWVvZNIhpagtAaMrvVj4Ha', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:58', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (351, 101, '24405090311', '向欣', '00', '2819406307@qq.com', '19310106375', '1', '', '$2a$10$IcyY0HySsO.7cuJp7JB63uucrcPzerRKPTI60smO5iV.9lXb6vkqy', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:58', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (352, 101, '23405010221', '付小荣', '00', '2078337946@qq.com', '13638444482', '1', '', '$2a$10$60TOwvmpepg0liI7enElBurZN8WgnQIyRnXdGJHnNa53OM3tHl7y.', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:58', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (353, 101, '24405090317', '舒婉男', '00', '1490852806@qq.com', '15600773200', '1', '', '$2a$10$F6tMTUQ9KUXAnmD3kodUx.PhrIrYCRjDshSUyE3XEgPvJ0quj2OPi', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:58', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (354, 101, '23405010102', '辛雅静', '00', '1956132796@qq.com', '16551771151', '1', '', '$2a$10$5y2cY.NkGm2VG0ZHIe8PMOhWXV4e/Sr7w/8BIumnu6H68gl72NbvW', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:58', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (355, 101, '24405090344', '刘思宇', '00', '2753428883@qq.com', '17872313057', '0', '', '$2a$10$AzUbH9AkAKcph6GE09vCWeW6WbMK1wJt7SnzbJEHy4NkRMDhV38Gu', '0', '0', '', NULL, 'admin', '2024-12-07 15:32:58', '', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_user_post
@@ -1782,13 +1924,14 @@ CREATE TABLE `t_proofs`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '积分认定的时间',
   PRIMARY KEY (`material_id`) USING BTREE,
   INDEX `user_id_wj`(`user_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_proofs
 -- ----------------------------
 INSERT INTO `t_proofs` VALUES (14, 114, 0x3C703E3C696D67207372633D222F6465762D6170692F70726F66696C652F75706C6F61642F323032342F31312F31312F696D6167652D32303234313131313131303830353237395F3230323431313131313231353133413030312E706E67223E3C2F703E3C703EE6B58BE8AF95E7BB84E995BFE4B88AE4BCA03C2F703E, '2024-11-11 12:15:33', '1', 114, '1', '2024-11-11 12:15:47');
 INSERT INTO `t_proofs` VALUES (15, 116, 0x3C703E3C696D67207372633D222F6465762D6170692F70726F66696C652F75706C6F61642F323032342F31312F31312F696D6167652D32303234313131313131303635323934335F3230323431313131313231373434413030322E706E67223E3C2F703E3C703EE6B58BE8AF95E7BB84E59198E8BF9BE8A18CE59BBEE78987E79A84E4B88AE4BCA02020E5958A3C2F703E, '2024-11-11 12:18:02', '1', 115, '1', '2024-11-11 12:18:36');
+INSERT INTO `t_proofs` VALUES (16, 100, 0x3C703E3C696D67207372633D222F6465762D6170692F70726F66696C652F75706C6F61642F323032342F31312F31392F696D6167652D32303234313131313131303830353237395F3230323431313139313933353537413030312E706E67223E3C2F703E, '2024-11-19 19:35:59', '1', 114, '1', '2024-11-19 19:53:16');
 
 -- ----------------------------
 -- Table structure for t_user_points
@@ -1803,14 +1946,48 @@ CREATE TABLE `t_user_points`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `dept`(`dept_id` ASC) USING BTREE,
   INDEX `userid`(`user_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户积分表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 117 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户积分表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_points
 -- ----------------------------
-INSERT INTO `t_user_points` VALUES (11, 114, 200, 101, '2024-11-11 12:11:46');
-INSERT INTO `t_user_points` VALUES (12, 115, 201, 100, '2024-11-11 12:12:09');
-INSERT INTO `t_user_points` VALUES (13, 116, 201, 101, '2024-11-11 12:12:36');
-INSERT INTO `t_user_points` VALUES (14, 117, 200, 100, '2024-11-11 12:16:39');
+INSERT INTO `t_user_points` VALUES (11, 114, 200, 97, '2024-11-11 12:11:46');
+INSERT INTO `t_user_points` VALUES (12, 115, 201, 96, '2024-11-11 12:12:09');
+INSERT INTO `t_user_points` VALUES (13, 116, 201, 97, '2024-11-11 12:12:36');
+INSERT INTO `t_user_points` VALUES (14, 117, 200, 96, '2024-11-11 12:16:39');
+INSERT INTO `t_user_points` VALUES (83, 322, 101, 100, '2024-12-07 15:32:54');
+INSERT INTO `t_user_points` VALUES (84, 323, 101, 100, '2024-12-07 15:32:54');
+INSERT INTO `t_user_points` VALUES (85, 324, 101, 100, '2024-12-07 15:32:54');
+INSERT INTO `t_user_points` VALUES (86, 325, 101, 100, '2024-12-07 15:32:54');
+INSERT INTO `t_user_points` VALUES (87, 326, 101, 100, '2024-12-07 15:32:54');
+INSERT INTO `t_user_points` VALUES (88, 327, 101, 100, '2024-12-07 15:32:55');
+INSERT INTO `t_user_points` VALUES (89, 328, 101, 100, '2024-12-07 15:32:55');
+INSERT INTO `t_user_points` VALUES (90, 329, 101, 100, '2024-12-07 15:32:55');
+INSERT INTO `t_user_points` VALUES (91, 330, 101, 100, '2024-12-07 15:32:55');
+INSERT INTO `t_user_points` VALUES (92, 331, 101, 100, '2024-12-07 15:32:55');
+INSERT INTO `t_user_points` VALUES (93, 332, 101, 100, '2024-12-07 15:32:55');
+INSERT INTO `t_user_points` VALUES (94, 333, 101, 100, '2024-12-07 15:32:55');
+INSERT INTO `t_user_points` VALUES (95, 334, 101, 100, '2024-12-07 15:32:55');
+INSERT INTO `t_user_points` VALUES (96, 335, 101, 100, '2024-12-07 15:32:56');
+INSERT INTO `t_user_points` VALUES (97, 336, 101, 100, '2024-12-07 15:32:56');
+INSERT INTO `t_user_points` VALUES (98, 337, 101, 100, '2024-12-07 15:32:56');
+INSERT INTO `t_user_points` VALUES (99, 338, 101, 100, '2024-12-07 15:32:56');
+INSERT INTO `t_user_points` VALUES (100, 339, 101, 100, '2024-12-07 15:32:56');
+INSERT INTO `t_user_points` VALUES (101, 340, 101, 100, '2024-12-07 15:32:56');
+INSERT INTO `t_user_points` VALUES (102, 341, 101, 100, '2024-12-07 15:32:56');
+INSERT INTO `t_user_points` VALUES (103, 342, 101, 100, '2024-12-07 15:32:57');
+INSERT INTO `t_user_points` VALUES (104, 343, 101, 100, '2024-12-07 15:32:57');
+INSERT INTO `t_user_points` VALUES (105, 344, 101, 100, '2024-12-07 15:32:57');
+INSERT INTO `t_user_points` VALUES (106, 345, 101, 100, '2024-12-07 15:32:57');
+INSERT INTO `t_user_points` VALUES (107, 346, 101, 100, '2024-12-07 15:32:57');
+INSERT INTO `t_user_points` VALUES (108, 347, 101, 100, '2024-12-07 15:32:57');
+INSERT INTO `t_user_points` VALUES (109, 348, 101, 100, '2024-12-07 15:32:57');
+INSERT INTO `t_user_points` VALUES (110, 349, 101, 100, '2024-12-07 15:32:58');
+INSERT INTO `t_user_points` VALUES (111, 350, 101, 100, '2024-12-07 15:32:58');
+INSERT INTO `t_user_points` VALUES (112, 351, 101, 100, '2024-12-07 15:32:58');
+INSERT INTO `t_user_points` VALUES (113, 352, 101, 100, '2024-12-07 15:32:58');
+INSERT INTO `t_user_points` VALUES (114, 353, 101, 100, '2024-12-07 15:32:58');
+INSERT INTO `t_user_points` VALUES (115, 354, 101, 100, '2024-12-07 15:32:58');
+INSERT INTO `t_user_points` VALUES (116, 355, 101, 100, '2024-12-07 15:32:58');
 
 SET FOREIGN_KEY_CHECKS = 1;

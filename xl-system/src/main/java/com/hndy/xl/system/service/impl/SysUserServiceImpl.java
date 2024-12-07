@@ -514,10 +514,10 @@ public class SysUserServiceImpl implements ISysUserService
                     String password = configService.selectConfigByKey("sys.user.initPassword");
                     user.setPassword(SecurityUtils.encryptPassword(password));
                     user.setCreateBy(operName);
-                    user.setDeptId(101L);
+                    user.setDeptId(206L);
                     userMapper.insertUser(user);
-                    System.out.println("*****************************");
-                    System.out.println(user+"\n\n");
+//                    System.out.println("*****************************");
+//                    System.out.println(user+"\n\n");
 //                    userPointMapper.addUserPoints(user.getUserId());
 
                     userPointMapper.addPoints(user.getDeptId(),user.getUserId());
