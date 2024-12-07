@@ -10,7 +10,8 @@ public interface UserPointMapper
 {
     @Insert("INSERT INTO t_user_points(dept_id, user_id, update_time) VALUES(#{deptId}, #{userId}, sysdate())")
     void addPoints(@Param("deptId") Long deptId, @Param("userId") Long userId);
-
+    @Insert("INSERT INTO t_user_points(user_id, update_time) VALUES( #{userId}, sysdate())")
+    void addUserPoints(@Param("userId") Long userId);
     @Update("UPDATE t_user_points SET dept_id = #{deptId} where user_id = #{userId}")
     void updatePoints(@Param("deptId")Long deptId,@Param("userId")  Long userId);
 

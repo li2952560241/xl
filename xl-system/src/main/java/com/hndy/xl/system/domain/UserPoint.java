@@ -8,7 +8,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 /**
  * 用户积分对象 t_user_points
  * 
- * @author ruoyi
+ * @author lxy
  * @date 2024-10-29
  */
 public class UserPoint extends BaseEntity
