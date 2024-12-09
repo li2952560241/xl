@@ -1,0 +1,33 @@
+version: '3'
+services:
+  vue:
+    image: xlvue  # 假设前端镜像名为 xlvue
+    build:
+      context: ./xl-ui  # 假设 Vue 项目源代码位于 ./xl-ui 目录
+    networks:
+      - mynetwork
+    ports:
+      - "80:80"  # 前端暴露的端口（假设 Vue 构建的容器使用 nginx，监听 80 端口）
+
+  boot:
+    image: xlboot  # 后端镜像名
+    networks:
+      - mynetwork
+    environment:
+      - DB_HOST=host.docker.internal  # 物理机上的数据库地址
+      - REDIS_HOST=redis              # Redis 容器的名称
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"  # 添加 映射
+  #    ports:
+  #      - "8080:8080"  # 后端暴露的端口（假设后端在 8080 端口监听）
+
+  redis:
+    image: redis  # Redis 镜像
+    networks:
+      - mynetwork
+#    ports:
+#      - "6379:6379"  # Redis 端口
+
+networks:
+  mynetwork:
+    driver: bridge  # 使用桥接网络

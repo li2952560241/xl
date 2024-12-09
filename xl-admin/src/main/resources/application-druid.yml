@@ -6,9 +6,9 @@ spring:
         druid:
             # 主库数据源
             master:
-                url: jdbc:mysql://localhost:3308/xl?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-                username: root
-                password: 123456
+                url: jdbc:mysql://host.docker.internal:3306/xl?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+                username: xl
+                password: WasR42KkHFMWrDJZ
             # 从库数据源
             slave:
                 # 从数据源开关/默认关闭
@@ -16,7 +16,7 @@ spring:
                 url: 
                 username: 
                 password: 
-            # 初始连接数
+            # 初始连接数n
             initialSize: 5
             # 最小连接池数量
             minIdle: 10
